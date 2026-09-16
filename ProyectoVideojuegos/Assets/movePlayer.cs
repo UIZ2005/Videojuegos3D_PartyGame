@@ -37,7 +37,7 @@ public class movePlayer : MonoBehaviour
     private void OnLook(InputValue context)
     {
 
-    }:
+    }
     // Update is called once per frame
     void Update()
     {
