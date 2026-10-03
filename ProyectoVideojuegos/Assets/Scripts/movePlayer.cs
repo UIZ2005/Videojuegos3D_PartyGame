@@ -56,7 +56,6 @@ public class movePlayer : MonoBehaviour
     private void OnLook(InputValue context)
     {
         lookInput = context.Get<Vector2>();
-        Debug.Log(lookInput);
     }
 
     private void OnJump(InputValue context)

@@ -72,8 +72,6 @@ public class invisible : PowerUp
     {
         float elapsedTime = 0f;
 
-        Material disolveMaterial = GetComponent<Renderer>().material;
-
         while (elapsedTime < disolverDuration)
         {
             elapsedTime += Time.deltaTime;
@@ -91,7 +89,6 @@ public class invisible : PowerUp
     {
         float elapsedTime = 0f;
 
-        Material disolveMaterial = GetComponent<Renderer>().material;
 
         while (elapsedTime < disolverDuration)
         {
