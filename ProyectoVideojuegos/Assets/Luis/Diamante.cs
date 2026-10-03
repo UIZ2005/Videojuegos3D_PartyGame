@@ -1,0 +1,48 @@
+using UnityEngine;
+
+public class Diamante : MonoBehaviour
+{
+    public float relentizacion=2f;
+    public float fuerzaSalida=10f;
+    public float fuerzaSalidaup = 5f;
+    private Vector3 escalaOriginal;
+    private bool inplayer=false;
+    private Transform playertransfomr;
+    private Rigidbody rb;
+    private Collider col;
+
+    private void Awake()
+    {
+        escalaOriginal = transform.localScale;
+        rb = GetComponent<Rigidbody>();
+        col = GetComponent<Collider>();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !inplayer)
+        {
+            col.isTrigger = true;
+            rb.isKinematic = true;
+            playertransfomr = other.transform;
+            inplayer = true;
+            Transform agarrediamante = other.GetComponent<movePlayer>().diamante;
+            playertransfomr.gameObject.GetComponent<movePlayer>().speed -= relentizacion;
+            transform.position = agarrediamante.position;
+            transform.SetParent(agarrediamante);
+            transform.localScale = escalaOriginal;
+        }
+    }
+
+    public void soltardiamante()
+    {
+        playertransfomr.gameObject.GetComponent<movePlayer>().speed += relentizacion;
+        rb.isKinematic = false;
+        col.isTrigger = false;
+        Vector3 direccionsoltar =
+               (-playertransfomr.forward * fuerzaSalida) +
+               (Vector3.up * fuerzaSalidaup);
+        inplayer = false;
+        transform.SetParent(null);
+        rb.AddForce(direccionsoltar, ForceMode.Impulse);
+    }
+}
