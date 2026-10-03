@@ -4,5 +4,6 @@ public enum PowerUpType
 {
     Bomba,
     Gancho, // Enredadera Cazadora
-    Impulso // Impulso de Céfiro
+    Impulso, // Impulso de Céfiro
+    invisibilidad
 }

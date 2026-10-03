@@ -150,6 +150,7 @@ MonoBehaviour:
   fuerzaUsoHaciaAdelante: 10
   fuerzaUsoHaciaArriba: 5
   diamante: {fileID: 4936116676786224636}
+  condiamante: 0
 --- !u!114 &943789411795537114
 MonoBehaviour:
   m_ObjectHideFlags: 0
