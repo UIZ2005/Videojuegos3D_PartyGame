@@ -27,7 +27,7 @@ public class movePlayer : MonoBehaviour
     public float fuerzaUsoHaciaArriba = 5f;
 
     private PowerUp poderSostenido;
-
+    private bool quieto=false;
     
 
     public void Awake()
@@ -106,6 +106,7 @@ public class movePlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (quieto) return;
         if (camara == null) return;
 
         // Dirección horizontal de la cámara.
@@ -146,5 +147,14 @@ public class movePlayer : MonoBehaviour
 
             rb.MoveRotation(nuevaRotacion);
         }
+    }
+
+    public void activarquieto()
+    {
+        quieto = true;
+    }
+    public void desactivarquieto()
+    {
+        quieto = false;
     }
 }
