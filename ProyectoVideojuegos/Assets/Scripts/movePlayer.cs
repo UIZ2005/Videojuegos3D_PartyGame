@@ -35,6 +35,7 @@ public class movePlayer : MonoBehaviour
     public Transform diamante;
     private PowerUp poderSostenido;
     private bool quieto=false;
+    public bool condiamante = false;
     
 
     public void Awake()

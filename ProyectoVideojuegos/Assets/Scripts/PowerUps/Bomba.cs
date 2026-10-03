@@ -15,9 +15,11 @@ public class Bomba : PowerUp
     private bool fueLanzada = false;
     private bool yaExplotando = false;
     private Vector3 escalaOriginal;
+    private Diamante diamante;
 
     void Awake()
     {
+        diamante = FindAnyObjectByType<Diamante>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         escalaOriginal = transform.localScale;
@@ -73,6 +75,12 @@ public class Bomba : PowerUp
         {
             if (item.TryGetComponent(out Rigidbody rigidColisionado))
             {
+                if (diamante != null)
+                {
+                    if (item.CompareTag("Player") && item.gameObject.GetComponent<movePlayer>().condiamante)
+                        diamante.soltardiamante();
+                }
+
                 rigidColisionado.AddExplosionForce(
                     fuerzaExplosion, transform.position, radioExplosion, 2, ForceMode.Impulse
                 );

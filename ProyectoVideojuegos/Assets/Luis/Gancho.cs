@@ -109,8 +109,10 @@ public class Gancho : PowerUp
             capasEnganchables
         ))
         {
-            if (hit.collider.CompareTag("Player"))
+            if (diamante != null) { 
+            if (hit.collider.CompareTag("Player") && hit.collider.gameObject.GetComponent<movePlayer>().condiamante)
                 diamante.soltardiamante();
+            }
 
             StartCoroutine(
                 AtraerJugador(hit.point)

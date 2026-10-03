@@ -27,6 +27,7 @@ public class Diamante : MonoBehaviour
             inplayer = true;
             Transform agarrediamante = other.GetComponent<movePlayer>().diamante;
             playertransfomr.gameObject.GetComponent<movePlayer>().speed -= relentizacion;
+            playertransfomr.gameObject.GetComponent<movePlayer>().condiamante = true;
             transform.position = agarrediamante.position;
             transform.SetParent(agarrediamante);
             transform.localScale = escalaOriginal;
@@ -35,6 +36,7 @@ public class Diamante : MonoBehaviour
 
     public void soltardiamante()
     {
+        playertransfomr.gameObject.GetComponent<movePlayer>().condiamante = false;
         playertransfomr.gameObject.GetComponent<movePlayer>().speed += relentizacion;
         rb.isKinematic = false;
         col.isTrigger = false;
