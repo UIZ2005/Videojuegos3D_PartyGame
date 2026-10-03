@@ -7,25 +7,32 @@ public class movePlayer : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
 
+    [Header("Movimiento")]
     public float speed = 5f;
     public float jumpForce = 5f;
+
+    [Header("Mira")]
     public float rotationSpeed = 15f;
     public Camera camara;
 
     private Rigidbody rb;
 
+
+    [Header("Salto")]
     public Transform puntoPiso;
     public float groundCheckRadius = 0.2f;
     public LayerMask piso;
     public bool estaPiso;
 
-    // Sistema de Poderes
+    [Header("Sistema de poderes")]
     public Transform puntoAgarrePoder;
     public float radioInteraccion = 2f;
     public LayerMask capaPoderes;
     public float fuerzaUsoHaciaAdelante = 10f;
     public float fuerzaUsoHaciaArriba = 5f;
 
+    [Header("attach diamante")]
+    public Transform diamante;
     private PowerUp poderSostenido;
     private bool quieto=false;
     
@@ -48,6 +55,7 @@ public class movePlayer : MonoBehaviour
     private void OnLook(InputValue context)
     {
         lookInput = context.Get<Vector2>();
+        Debug.Log(lookInput);
     }
 
     private void OnJump(InputValue context)
@@ -152,9 +160,13 @@ public class movePlayer : MonoBehaviour
     public void activarquieto()
     {
         quieto = true;
+        moveInput = Vector2.zero;
+
+        rb.linearVelocity = Vector3.zero;
     }
     public void desactivarquieto()
     {
         quieto = false;
+        moveInput = Vector2.zero;
     }
 }
