@@ -15,6 +15,9 @@ public class PowerUpColor : PowerUp
     private bool usado = false;
 
 
+    public AudioSource fuenteAudio;   // AudioSource en este mismo objeto
+     public AudioClip sonidoRecoger;
+
     public override bool SigueEnManoTrasUsar() => !usado;
 
     void Awake()
@@ -32,12 +35,16 @@ public class PowerUpColor : PowerUp
     {
         recogido = true;
 
+
         if (rb != null) rb.isKinematic = true;
         if (col != null) col.enabled = false;
         if (modelo != null) modelo.SetActive(false); // no se sostiene en la mano como la bomba
 
         transform.SetParent(puntoAgarre);
         transform.localPosition = Vector3.zero;
+
+        fuenteAudio.PlayOneShot(sonidoRecoger);
+
 
         // Busca la rueda del jugador que lo recogió
         var playerInput = puntoAgarre.GetComponentInParent<PlayerInput>();
@@ -48,7 +55,7 @@ public class PowerUpColor : PowerUp
             Debug.LogWarning("PowerUpColor: el jugador no tiene una RuedaColoresUI en su prefab.");
     }
 
-    // La dirección no se usa: aquí "usar" significa abrir la rueda
+    //usar es para abrir la rueda
     public override void Usar(Vector3 direccionUso)
     {
         if (!recogido || ruedaAbierta || usado || rueda == null) return;

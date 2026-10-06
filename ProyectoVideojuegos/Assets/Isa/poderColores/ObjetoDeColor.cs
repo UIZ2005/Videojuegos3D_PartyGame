@@ -7,11 +7,11 @@ public class ObjetoDeColor : MonoBehaviour
 {
     [SerializeField] private ColorJuego colorAsignado;
 
-    [Header("Aviso antes de reaparecer")]
+    
     [SerializeField] private float tiempoParpadeo = 1f;
     [SerializeField] private float velocidadParpadeo = 0.1f;
 
-    [Header("No reaparecer encima de un jugador (opcional)")]
+    
     [SerializeField] private LayerMask capaJugadores;
 
     private static readonly List<ObjetoDeColor> todos = new List<ObjetoDeColor>();
@@ -39,7 +39,7 @@ public class ObjetoDeColor : MonoBehaviour
         if (EstaOculto) Restaurar();
     }
 
-    // ===== Punto único de entrada: lo llama el power-up =====
+   
     public static void OcultarColor(ColorJuego color, float duracion)
     {
         foreach (var obj in todos)
@@ -49,7 +49,7 @@ public class ObjetoDeColor : MonoBehaviour
 
     public void Ocultar(float duracion)
     {
-        // Si ya estaba oculto y alguien vuelve a usar el mismo color, se reinicia el tiempo
+       
         if (rutina != null) StopCoroutine(rutina);
         rutina = StartCoroutine(RutinaOcultar(duracion));
     }
@@ -65,7 +65,7 @@ public class ObjetoDeColor : MonoBehaviour
 
         yield return new WaitForSeconds(Mathf.Max(0f, duracion - tiempoParpadeo));
 
-        // Parpadeo de aviso: se ve, pero todavía no es sólido
+        // Parpadeo de aviso
         float t = 0f;
         bool visible = false;
         while (t < tiempoParpadeo)

@@ -3,20 +3,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-// Va en el objeto "RuedaColores" dentro del Canvas del jugador (SIEMPRE activo).
-// La rueda es un anillo que rodea al jugador en su propia pantalla.
+
 public class RuedaColoresUI : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private RectTransform contenedorRueda;
-    [SerializeField] private RectTransform indicador;   // opcional: flecha que apunta al color
-    [SerializeField] private Sprite spriteAnillo;       // opcional: si está vacío se genera solo
+    [SerializeField] private RectTransform indicador;   
+    [SerializeField] private Sprite spriteAnillo;       
 
-    [Header("Seguir al jugador")]
-    [Tooltip("Punto del cuerpo que queda en el centro del anillo. Si está vacío usa el objeto del PlayerInput.")]
+    
     [SerializeField] private Transform objetivo;
-    [Tooltip("Desplazamiento desde el objetivo (ej: Y = 1 para el pecho si el pivote está en los pies).")]
+    
     [SerializeField] private Vector3 desplazamiento = new Vector3(0f, 1f, 0f);
 
     [Header("Apariencia")]
@@ -27,7 +25,7 @@ public class RuedaColoresUI : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float alfaNoSeleccionado = 0.5f;
     [SerializeField] private float suavizado = 15f;
 
-    [Header("Nombres de las acciones (mismo Action Map del jugador)")]
+
     [SerializeField] private string accionApuntar = "ApuntarRueda";
     [SerializeField] private string accionGirar = "GirarRueda";
     [SerializeField] private string accionConfirmar = "ConfirmarColor";
@@ -112,7 +110,7 @@ public class RuedaColoresUI : MonoBehaviour
             rt.SetParent(contenedorRueda, false);
             rt.sizeDelta = Vector2.one * radio * 2f;
             rt.anchoredPosition = Vector2.zero;
-            // Segmento i ocupa de i*anguloSeg a (i+1)*anguloSeg, en sentido horario desde arriba
+           
             rt.localEulerAngles = new Vector3(0f, 0f, -(i * anguloSeg + separacionGrados * 0.5f));
 
             var img = go.GetComponent<Image>();
@@ -131,7 +129,7 @@ public class RuedaColoresUI : MonoBehaviour
         if (indicador != null) indicador.SetAsLastSibling();
     }
 
-    // Genera un anillo blanco con bordes suaves (el centro queda transparente)
+    
     private static Sprite CrearSpriteAnillo(int tam, float grosor)
     {
         var tex = new Texture2D(tam, tam, TextureFormat.RGBA32, false);
@@ -185,19 +183,19 @@ public class RuedaColoresUI : MonoBehaviour
         if (!abierta) return;
         int n = segmentos.Length;
 
-        // MANDO: el stick derecho apunta directamente al color
+        
         if (apuntar != null)
         {
             Vector2 v = apuntar.ReadValue<Vector2>();
             if (v.sqrMagnitude > zonaMuertaStick * zonaMuertaStick)
             {
-                float ang = Mathf.Atan2(v.x, v.y) * Mathf.Rad2Deg; // 0° = arriba, sentido horario
+                float ang = Mathf.Atan2(v.x, v.y) * Mathf.Rad2Deg; 
                 if (ang < 0f) ang += 360f;
                 indice = Mathf.FloorToInt(ang / (360f / n)) % n;
             }
         }
 
-        // MOUSE: cada movimiento de la rueda avanza o retrocede un color
+        //  cada movimiento de la rueda avanza o retrocede un color
         if (girar != null && Time.unscaledTime >= siguientePasoScroll)
         {
             float s = girar.ReadValue<float>();
@@ -228,7 +226,7 @@ public class RuedaColoresUI : MonoBehaviour
         ActualizarVisual(false);
     }
 
-    // LateUpdate: después de que el jugador y la cámara se movieron
+    
     void LateUpdate()
     {
         if (abierta) PosicionarSobreJugador();

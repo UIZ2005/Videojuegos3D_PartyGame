@@ -4,7 +4,8 @@ public class PowerUpFactory : MonoBehaviour
 {
     [SerializeField] private PowerUp bombaPrefab;
     [SerializeField] private PowerUp ganchoPrefab; 
-    [SerializeField] private PowerUp impulsoPrefab; 
+    [SerializeField] private PowerUp impulsoPrefab;
+    [SerializeField] private PowerUp coloresPrefab;
 
     public PowerUp CrearPowerUp(PowerUpType tipo, Vector3 posicion)
     {
@@ -18,9 +19,13 @@ public class PowerUpFactory : MonoBehaviour
             case PowerUpType.Gancho:
                 prefabSeleccionado = ganchoPrefab;
                 break;
+            case PowerUpType.colores:
+                prefabSeleccionado = coloresPrefab;
+                break;
             case PowerUpType.Impulso:
                 prefabSeleccionado = impulsoPrefab;
                 break;
+            
         }
 
         if (prefabSeleccionado == null)
