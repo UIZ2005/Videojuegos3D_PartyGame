@@ -31,6 +31,10 @@ public class movePlayer : MonoBehaviour
     public float fuerzaUsoHaciaAdelante = 10f;
     public float fuerzaUsoHaciaArriba = 5f;
 
+    [Header("Ground Pound")]
+    private bool haciendoGroundPound = false;
+    private GroundPound groundPoundActivo;
+
     [Header("attach diamante")]
     public Transform diamante;
     private PowerUp poderSostenido;
@@ -105,13 +109,63 @@ public class movePlayer : MonoBehaviour
         }
     }
 
+    public void IniciarGroundPound(
+    float velocidadCaida,
+    GroundPound groundPound
+    )
+    {
+        if (estaPiso)
+            return;
+
+        haciendoGroundPound = true;
+        groundPoundActivo = groundPound;
+
+        moveInput = Vector2.zero;
+
+        Vector3 velocidad = rb.linearVelocity;
+        velocidad.x = 0f;
+        velocidad.z = 0f;
+        velocidad.y = -velocidadCaida;
+
+        rb.linearVelocity = velocidad;
+    }
+
     private void Update()
     {
+        bool estabaEnPiso = estaPiso;
+
         estaPiso = Physics.CheckSphere(
             puntoPiso.position,
             groundCheckRadius,
             piso
         );
+
+        if (haciendoGroundPound && estaPiso && !estabaEnPiso)
+        {
+            TerminarGroundPound();
+        }
+    }
+
+    private void TerminarGroundPound()
+    {
+        haciendoGroundPound = false;
+
+        Vector3 velocidad = rb.linearVelocity;
+        velocidad.y = 0f;
+        rb.linearVelocity = velocidad;
+
+        moveInput = Vector2.zero;
+
+        if (groundPoundActivo != null)
+        {
+            groundPoundActivo.EjecutarImpacto(
+                puntoPiso.position
+            );
+
+            groundPoundActivo = null;
+        }
+
+        Debug.Log("Ground Pound: impacto contra el suelo");
     }
 
 
@@ -119,6 +173,18 @@ public class movePlayer : MonoBehaviour
     {
         if (quieto) return;
         if (camara == null) return;
+
+        if (haciendoGroundPound)
+        {
+            Vector3 velocidadGroundPound = rb.linearVelocity;
+
+            velocidadGroundPound.x = 0f;
+            velocidadGroundPound.z = 0f;
+
+            rb.linearVelocity = velocidadGroundPound;
+
+            return;
+        }
 
         // Dirección horizontal de la cámara.
         Vector3 direccionAdelante = camara.transform.forward;
