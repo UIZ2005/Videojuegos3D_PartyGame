@@ -78,8 +78,7 @@ public class movePlayer : MonoBehaviour
 
             poderSostenido.Usar(direccionUso);
 
-            // La bomba se suelta al usarla; la rueda de colores se queda
-            // con el jugador hasta que se confirme un color.
+            
             if (!poderSostenido.SigueEnManoTrasUsar())
                 poderSostenido = null;
         }
