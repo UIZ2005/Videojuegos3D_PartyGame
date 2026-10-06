@@ -88,7 +88,7 @@ public class Gancho : PowerUp
         col.isTrigger = true;
 
         // El gancho trabaja horizontalmente.
-        direccionUso.y = 0f;
+        direccionUso = movimientoJugador.camara.transform.forward;
 
         if (direccionUso.sqrMagnitude < 0.01f)
         {
