@@ -33,6 +33,7 @@ public class movePlayer : MonoBehaviour
 
     [Header("Ground Pound")]
     private bool haciendoGroundPound = false;
+    private GroundPound groundPoundActivo;
 
     [Header("attach diamante")]
     public Transform diamante;
@@ -108,12 +109,16 @@ public class movePlayer : MonoBehaviour
         }
     }
 
-    public void IniciarGroundPound(float velocidadCaida)
+    public void IniciarGroundPound(
+    float velocidadCaida,
+    GroundPound groundPound
+    )
     {
         if (estaPiso)
             return;
 
         haciendoGroundPound = true;
+        groundPoundActivo = groundPound;
 
         moveInput = Vector2.zero;
 
@@ -150,6 +155,15 @@ public class movePlayer : MonoBehaviour
         rb.linearVelocity = velocidad;
 
         moveInput = Vector2.zero;
+
+        if (groundPoundActivo != null)
+        {
+            groundPoundActivo.EjecutarImpacto(
+                puntoPiso.position
+            );
+
+            groundPoundActivo = null;
+        }
 
         Debug.Log("Ground Pound: impacto contra el suelo");
     }
