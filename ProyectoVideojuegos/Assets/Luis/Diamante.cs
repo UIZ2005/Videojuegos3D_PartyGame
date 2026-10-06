@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Diamante : MonoBehaviour
@@ -5,17 +6,18 @@ public class Diamante : MonoBehaviour
     public float relentizacion=2f;
     public float fuerzaSalida=10f;
     public float fuerzaSalidaup = 5f;
+    public float tiempodeespera;
     private Vector3 escalaOriginal;
     private bool inplayer=false;
     private Transform playertransfomr;
     private Rigidbody rb;
-    private Collider col;
+    private BoxCollider col;
 
     private void Awake()
     {
         escalaOriginal = transform.localScale;
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
+        col = GetComponent<BoxCollider>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -36,6 +38,11 @@ public class Diamante : MonoBehaviour
 
     public void soltardiamante()
     {
+        StartCoroutine(hitdiamon());
+    }
+
+    IEnumerator hitdiamon()
+    {
         playertransfomr.gameObject.GetComponent<movePlayer>().condiamante = false;
         playertransfomr.gameObject.GetComponent<movePlayer>().speed += relentizacion;
         rb.isKinematic = false;
@@ -43,8 +50,12 @@ public class Diamante : MonoBehaviour
         Vector3 direccionsoltar =
                (-playertransfomr.forward * fuerzaSalida) +
                (Vector3.up * fuerzaSalidaup);
-        inplayer = false;
         transform.SetParent(null);
         rb.AddForce(direccionsoltar, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(tiempodeespera);
+
+        inplayer = false;
+        yield return null;
     }
 }
