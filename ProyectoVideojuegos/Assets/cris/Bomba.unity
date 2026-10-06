@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpFactory
   bombaPrefab: {fileID: 4851629230783637945, guid: 2e58ca0ea22947d4a912b0de2211dc1c, type: 3}
   ganchoPrefab: {fileID: 740028674581779857, guid: c957595bc42d3b54d822ea909e240461, type: 3}
-  impulsoPrefab: {fileID: 0}
+  impulsoPrefab: {fileID: 3079434365858212907, guid: 3bc2ba44897cdc04ab709aa50c08b86b, type: 3}
   coloresPrefab: {fileID: 8264521872188902587, guid: ce590c5f932989f46b5f401447ddd22b, type: 3}
 --- !u!4 &145135321
 Transform:
@@ -878,6 +878,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 322580595867337558, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9850334
+      objectReference: {fileID: 0}
+    - target: {fileID: 322580595867337558, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.17234978
+      objectReference: {fileID: 0}
+    - target: {fileID: 322580595867337558, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0021743271
+      objectReference: {fileID: 0}
+    - target: {fileID: 322580595867337558, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0003804387
+      objectReference: {fileID: 0}
     - target: {fileID: 1167131949367865722, guid: 7be119000360eca409c0653606ded726, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.62
@@ -918,6 +934,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5291970286309745263, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98503333
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291970286309745263, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.17234983
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291970286309745263, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0021743274
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291970286309745263, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00038043884
+      objectReference: {fileID: 0}
     - target: {fileID: 5706058640084182201, guid: 7be119000360eca409c0653606ded726, type: 3}
       propertyPath: m_Name
       value: Player_basic Variant
@@ -948,7 +980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1784308664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1097,7 +1129,7 @@ Transform:
   m_GameObject: {fileID: 1784308663}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.656, z: 0.5}
+  m_LocalPosition: {x: 0.5, y: 1.42, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
