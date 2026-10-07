@@ -39,7 +39,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Ancho_Borde: 0.03
-    - _Escala_Disolver: 0.4780154
+    - _Escala_Disolver: 1
     - _Escala_Ruido: 30
     - _QueueControl: 0
     - _QueueOffset: 0
