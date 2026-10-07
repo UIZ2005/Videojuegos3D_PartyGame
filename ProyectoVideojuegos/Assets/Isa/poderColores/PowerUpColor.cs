@@ -38,7 +38,7 @@ public class PowerUpColor : PowerUp
 
         if (rb != null) rb.isKinematic = true;
         if (col != null) col.enabled = false;
-        if (modelo != null) modelo.SetActive(false); // no se sostiene en la mano como la bomba
+        if (modelo != null) modelo.SetActive(true); // no se sostiene en la mano como la bomba
 
         transform.SetParent(puntoAgarre);
         transform.localPosition = Vector3.zero;
