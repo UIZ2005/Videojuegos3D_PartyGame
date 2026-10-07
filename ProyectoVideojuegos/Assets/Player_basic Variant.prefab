@@ -192,6 +192,14 @@ PrefabInstance:
       value: 0.00029480061
       objectReference: {fileID: 0}
     - target: {fileID: 5467335039410898622, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5467335039410898622, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: jumpForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5467335039410898622, guid: 7be119000360eca409c0653606ded726, type: 3}
       propertyPath: players.Array.size
       value: 4
       objectReference: {fileID: 0}

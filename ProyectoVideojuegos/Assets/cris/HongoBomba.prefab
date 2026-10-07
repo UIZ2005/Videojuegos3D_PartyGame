@@ -5056,7 +5056,7 @@ MonoBehaviour:
   nombrePoder: Bomba
   modelo: {fileID: 7671402695159334022}
   particulasExplosion: {fileID: 389080208379912190}
-  fuerzaExplosion: 5
+  fuerzaExplosion: 15
   radioExplosion: 4
   capasExplosion:
     serializedVersion: 2
