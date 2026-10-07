@@ -12,7 +12,7 @@ public class invisible : PowerUp
 
     [Header("visual")]
     public GameObject objvisual;
-
+    [SerializeField] float escalaPequena = 0.5f;
 
     private bool estaSostenido = false;
     private bool yaUsado = false;
@@ -21,20 +21,16 @@ public class invisible : PowerUp
     private Collider col;
     private Vector3 escalaOriginal;
     private GameObject player;
-    private Material actualMaterial;
-
+    private MeshRenderer[] meshRenderers;
+    private Material[][] materialesOriginales;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         escalaOriginal = transform.localScale;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
+
     public override bool PuedeSerRecogido()
     {
         return !estaSostenido && !yaUsado;
@@ -44,10 +40,18 @@ public class invisible : PowerUp
         rb.isKinematic = true;
         col.isTrigger = true;
         player = puntoAgarre.root.gameObject;
-        actualMaterial = puntoAgarre.root.GetComponent<MeshRenderer>().material;
+        meshRenderers = player.GetComponentsInChildren<MeshRenderer>();
+        materialesOriginales = new Material[meshRenderers.Length][];
+
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            materialesOriginales[i] = meshRenderers[i].materials;
+        }
+
         transform.position = puntoAgarre.position;
         transform.SetParent(puntoAgarre);
         transform.localScale = escalaOriginal;
+        transform.localScale = escalaOriginal * escalaPequena;
     }
     public override void Usar(Vector3 direccionUso)
     {
@@ -55,7 +59,11 @@ public class invisible : PowerUp
             return;
         yaUsado = true;
         objvisual.SetActive(false);
-        player.GetComponent<Renderer>().material = disolveMaterial;
+
+        foreach (MeshRenderer meshRenderer in meshRenderers)
+        {
+            meshRenderer.material = disolveMaterial;
+        }
         StartDisolve();
     }
     private void StartDisolve()
@@ -99,7 +107,10 @@ public class invisible : PowerUp
 
             yield return null;
         }
-        player.GetComponent<Renderer>().material = actualMaterial;
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].materials = materialesOriginales[i];
+        }
 
         Destroy(gameObject);
     }

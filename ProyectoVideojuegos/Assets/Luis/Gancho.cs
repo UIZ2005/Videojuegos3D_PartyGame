@@ -10,6 +10,9 @@ public class Gancho : PowerUp
 
     [Header("Visual")]
     [SerializeField] private LineRenderer liana;
+    [SerializeField] float escalaPequena = 0.5f;
+
+    private Vector3 escalaOriginal;
 
     private Rigidbody rb;
     private Collider col;
@@ -24,7 +27,8 @@ public class Gancho : PowerUp
 
     private void Awake()
     {
-        diamante=FindAnyObjectByType<Diamante>();
+        escalaOriginal = transform.localScale;
+        diamante =FindAnyObjectByType<Diamante>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
 
@@ -67,6 +71,7 @@ public class Gancho : PowerUp
 
         transform.localRotation =
             Quaternion.identity;
+        transform.localScale = escalaOriginal * escalaPequena;
     }
 
     // =========================================================

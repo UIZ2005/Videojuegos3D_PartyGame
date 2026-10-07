@@ -6,6 +6,7 @@ public class PowerUpFactory : MonoBehaviour
     [SerializeField] private PowerUp ganchoPrefab; 
     [SerializeField] private PowerUp impulsoPrefab;
     [SerializeField] private PowerUp coloresPrefab;
+    [SerializeField] private PowerUp invisibilidadPrefab;
 
     public PowerUp CrearPowerUp(PowerUpType tipo, Vector3 posicion)
     {
@@ -25,7 +26,11 @@ public class PowerUpFactory : MonoBehaviour
             case PowerUpType.Impulso:
                 prefabSeleccionado = impulsoPrefab;
                 break;
-            
+            case PowerUpType.invisibilidad:
+                prefabSeleccionado = invisibilidadPrefab;
+                break;
+
+
         }
 
         if (prefabSeleccionado == null)

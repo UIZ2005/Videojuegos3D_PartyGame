@@ -6,6 +6,5 @@ public enum PowerUpType
     Gancho, // Enredadera Cazadora
     colores,
     Impulso, // Impulso de Céfiro
-    invisibilidad,
-    
+    invisibilidad
 }
