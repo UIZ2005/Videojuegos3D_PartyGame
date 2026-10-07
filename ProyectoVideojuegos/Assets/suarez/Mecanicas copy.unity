@@ -732,19 +732,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1590269566995198147, guid: 4fd91e8f76dc59d4a9d9e31d26b2787f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9850319
+      value: 0.9850335
       objectReference: {fileID: 0}
     - target: {fileID: 1590269566995198147, guid: 4fd91e8f76dc59d4a9d9e31d26b2787f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17234951
+      value: 0.17234987
       objectReference: {fileID: 0}
     - target: {fileID: 1590269566995198147, guid: 4fd91e8f76dc59d4a9d9e31d26b2787f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.002747617
+      value: -0.0020955862
       objectReference: {fileID: 0}
     - target: {fileID: 1590269566995198147, guid: 4fd91e8f76dc59d4a9d9e31d26b2787f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00048074636
+      value: 0.00036666158
       objectReference: {fileID: 0}
     - target: {fileID: 5716021212986106838, guid: 4fd91e8f76dc59d4a9d9e31d26b2787f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -788,19 +788,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6564865100819042810, guid: 4fd91e8f76dc59d4a9d9e31d26b2787f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9850319
+      value: 0.9850335
       objectReference: {fileID: 0}
     - target: {fileID: 6564865100819042810, guid: 4fd91e8f76dc59d4a9d9e31d26b2787f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17234953
+      value: 0.17234983
       objectReference: {fileID: 0}
     - target: {fileID: 6564865100819042810, guid: 4fd91e8f76dc59d4a9d9e31d26b2787f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0027476172
+      value: -0.0020955857
       objectReference: {fileID: 0}
     - target: {fileID: 6564865100819042810, guid: 4fd91e8f76dc59d4a9d9e31d26b2787f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0004807464
+      value: 0.00036666152
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1041,6 +1041,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3079434365858212907, guid: 3bc2ba44897cdc04ab709aa50c08b86b, type: 3}
+      propertyPath: radioImpacto
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3820095486119656439, guid: 3bc2ba44897cdc04ab709aa50c08b86b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.72398
