@@ -36,8 +36,12 @@ public class Diamante : MonoBehaviour
         }
     }
 
+    //Modificacion aqui para que suelte correctamente el diamante con la mecanica de groundpound -suarez
     public void soltardiamante()
     {
+        if (!inplayer || playertransfomr == null)
+            return;
+
         StartCoroutine(hitdiamon());
     }
 

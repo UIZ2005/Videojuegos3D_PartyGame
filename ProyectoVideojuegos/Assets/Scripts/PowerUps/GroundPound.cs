@@ -59,7 +59,8 @@ public class GroundPound : PowerUp
 
         foreach (Collider objeto in objetosAfectados)
         {
-            movePlayer jugadorAfectado = objeto.GetComponentInParent<movePlayer>();
+            movePlayer jugadorAfectado =
+                objeto.GetComponentInParent<movePlayer>();
 
             if (jugadorAfectado == null)
                 continue;
@@ -67,18 +68,22 @@ public class GroundPound : PowerUp
             if (jugadorAfectado == jugador)
                 continue;
 
-            AplicarEfectosJugador(jugadorAfectado);
+            AplicarEfectosJugador(
+                jugadorAfectado,
+                posicionImpacto
+            );
         }
     }
 
-    private void AplicarEfectosJugador(movePlayer jugadorAfectado)
+    private void AplicarEfectosJugador(movePlayer jugadorAfectado,Vector3 posicionImpacto)
     {
-        Rigidbody rbJugador = jugadorAfectado.GetComponent<Rigidbody>();
+        Rigidbody rbJugador =
+            jugadorAfectado.GetComponent<Rigidbody>();
 
         if (rbJugador != null)
         {
             Vector3 direccionEmpuje =
-                (jugadorAfectado.transform.position - transform.position).normalized;
+                (jugadorAfectado.transform.position - posicionImpacto).normalized;
 
             direccionEmpuje.y = 0f;
 
@@ -86,16 +91,24 @@ public class GroundPound : PowerUp
                 (direccionEmpuje * fuerzaEmpuje) +
                 (Vector3.up * fuerzaEmpujeVertical);
 
-            rbJugador.AddForce(fuerza, ForceMode.Impulse);
+            rbJugador.AddForce(
+                fuerza,
+                ForceMode.Impulse
+            );
         }
 
+        // Aturdir
         jugadorAfectado.activarquieto();
 
-        StartCoroutine(QuitarAturdimiento(jugadorAfectado));
+        StartCoroutine(
+            QuitarAturdimiento(jugadorAfectado)
+        );
 
+        // SOLTAR DIAMANTE
         if (jugadorAfectado.condiamante)
         {
-            Diamante diamante = FindAnyObjectByType<Diamante>();
+            Diamante diamante =
+                FindAnyObjectByType<Diamante>();
 
             if (diamante != null)
             {
