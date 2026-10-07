@@ -53,8 +53,9 @@ MonoBehaviour:
   velocidadAtraccion: 15
   capasEnganchables:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 392
   liana: {fileID: 894402550000409794}
+  escalaPequena: 0.5
 --- !u!65 &1511882923036790380
 BoxCollider:
   m_ObjectHideFlags: 0
