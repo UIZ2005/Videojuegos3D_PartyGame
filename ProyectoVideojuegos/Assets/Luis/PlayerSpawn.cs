@@ -24,6 +24,6 @@ public class PlayerSpawn : MonoBehaviour
         playerInput.GetComponentInChildren<CinemachineInputAxisController>().PlayerIndex = m_playerCount;
         m_playerCount++;
         //audiomanager.seleccionAudio(3);
-        //playerInput.GetComponent<movePlayer>().skinplayer(m_playerCount);
+        playerInput.GetComponent<movePlayer>().skinplayer(m_playerCount);
     }
 }

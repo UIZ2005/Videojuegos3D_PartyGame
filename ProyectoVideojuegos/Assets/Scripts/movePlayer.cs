@@ -40,7 +40,11 @@ public class movePlayer : MonoBehaviour
     private PowerUp poderSostenido;
     private bool quieto=false;
     public bool condiamante = false;
-    
+
+    [Header("Skins")]
+    public GameObject[] players;
+    public int numplayer;
+
 
     public void Awake()
     {
@@ -238,4 +242,12 @@ public class movePlayer : MonoBehaviour
         quieto = false;
         moveInput = Vector2.zero;
     }
+
+    public void skinplayer(int jugador)
+    {
+        numplayer = jugador;
+        players[jugador - 1].SetActive(true);
+    }
+
+
 }
