@@ -22,7 +22,7 @@ public class PowerUpSpawner : MonoBehaviour
     private void GenerarPoderAleatorio()
     {
         // Elige un número al azar entre 0, 1 y 2 (Bomba, Gancho, Impulso)
-        int indiceAleatorio = Random.Range(0, 4);
+        int indiceAleatorio = Random.Range(0, 5);
         PowerUpType tipoAleatorio = (PowerUpType)indiceAleatorio;
 
         // Calcula una posición al azar dentro de un círculo plano (ejes X y Z para 3D)
