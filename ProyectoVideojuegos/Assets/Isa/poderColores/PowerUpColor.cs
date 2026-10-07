@@ -61,6 +61,7 @@ public class PowerUpColor : PowerUp
         if (!recogido || ruedaAbierta || usado || rueda == null) return;
 
         ruedaAbierta = true;
+        if (modelo != null) modelo.SetActive(false); // no se sostiene en la mano como la bomba
         rueda.Abrir(AlConfirmarColor, AlCancelar);
     }
 
