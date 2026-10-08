@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpColor
   nombrePoder: colores
   modelo: {fileID: 7797665743467587768}
-  duracionDesaparicion: 5
+  duracionDesaparicion: 10
   fuenteAudio: {fileID: 8209841630084711841}
   sonidoRecoger: {fileID: 8300000, guid: e17b8a55eaa93424facaf871d4200ccb, type: 3}
 --- !u!54 &7660167509828908263
