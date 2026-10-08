@@ -6569,11 +6569,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6258181035773486596, guid: 89db479c6e3914c43860915c0d889bbd, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -5568371526223589888, guid: 89db479c6e3914c43860915c0d889bbd, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 89db479c6e3914c43860915c0d889bbd, type: 3}
       propertyPath: m_Name
