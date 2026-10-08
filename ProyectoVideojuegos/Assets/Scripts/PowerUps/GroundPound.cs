@@ -16,8 +16,14 @@ public class GroundPound : PowerUp
     private bool estaSostenido = false;
     private bool yaUsado = false;
 
+    private audiomanager Audiomanager;
+
     private movePlayer jugador;
 
+    private void Start()
+    {
+        Audiomanager = FindAnyObjectByType<audiomanager>();   
+    }
     public override bool PuedeSerRecogido()
     {
         return !estaSostenido && !yaUsado;
@@ -25,6 +31,9 @@ public class GroundPound : PowerUp
 
     public override void SerRecogido(Transform puntoAgarre)
     {
+        if (Audiomanager != null)
+            Audiomanager.seleccionAudio(0);
+
         estaSostenido = true;
 
         transform.position = puntoAgarre.position;

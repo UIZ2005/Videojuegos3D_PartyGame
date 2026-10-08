@@ -12,6 +12,8 @@ public class Gancho : PowerUp
     [SerializeField] private LineRenderer liana;
     [SerializeField] float escalaPequena = 0.5f;
 
+    private audiomanager Audiomanager;
+
     private Vector3 escalaOriginal;
 
     private Rigidbody rb;
@@ -27,6 +29,7 @@ public class Gancho : PowerUp
 
     private void Awake()
     {
+        Audiomanager = FindAnyObjectByType<audiomanager>();
         escalaOriginal = transform.localScale;
         diamante =FindAnyObjectByType<Diamante>();
         rb = GetComponent<Rigidbody>();
@@ -39,21 +42,15 @@ public class Gancho : PowerUp
         }
     }
 
-    // =========================================================
-    // ¿SE PUEDE RECOGER?
-    // =========================================================
-
     public override bool PuedeSerRecogido()
     {
         return !estaSostenido && !yaUsado;
     }
 
-    // =========================================================
-    // RECOGER
-    // =========================================================
-
     public override void SerRecogido(Transform puntoAgarre)
     {
+        if (Audiomanager != null)
+            Audiomanager.seleccionAudio(0);
         estaSostenido = true;
 
         jugador = puntoAgarre.root;
@@ -74,9 +71,6 @@ public class Gancho : PowerUp
         transform.localScale = escalaOriginal * escalaPequena;
     }
 
-    // =========================================================
-    // USAR
-    // =========================================================
 
     public override void Usar(Vector3 direccionUso)
     {
@@ -92,7 +86,6 @@ public class Gancho : PowerUp
         rb.isKinematic = true;
         col.isTrigger = true;
 
-        // El gancho trabaja horizontalmente.
         direccionUso = movimientoJugador.camara.transform.forward;
 
         if (direccionUso.sqrMagnitude < 0.01f)
@@ -103,7 +96,6 @@ public class Gancho : PowerUp
 
         direccionUso.Normalize();
 
-        // Buscar una pared/objeto enganchable.
         RaycastHit hit;
 
         if (Physics.Raycast(
@@ -130,10 +122,6 @@ public class Gancho : PowerUp
             DestruirGancho();
         }
     }
-
-    // =========================================================
-    // ATRAER JUGADOR
-    // =========================================================
 
     private IEnumerator AtraerJugador(
         Vector3 puntoObjetivo
@@ -223,10 +211,6 @@ public class Gancho : PowerUp
         DestruirGancho();
     }
 
-    // =========================================================
-    // DESTRUIR
-    // =========================================================
-
     private void DestruirGancho()
     {
         if (liana != null)
@@ -237,9 +221,6 @@ public class Gancho : PowerUp
         Destroy(gameObject);
     }
 
-    // =========================================================
-    // DEBUG
-    // =========================================================
 
     private void OnDrawGizmosSelected()
     {

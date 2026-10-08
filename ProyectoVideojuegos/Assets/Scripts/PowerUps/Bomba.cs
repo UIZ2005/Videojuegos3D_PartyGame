@@ -17,8 +17,10 @@ public class Bomba : PowerUp
     private Vector3 escalaOriginal;
     private Diamante diamante;
 
+    private audiomanager Audiomanager;
     void Awake()
     {
+        Audiomanager = FindAnyObjectByType<audiomanager>();
         diamante = FindAnyObjectByType<Diamante>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
@@ -33,6 +35,9 @@ public class Bomba : PowerUp
 
     public override void SerRecogido(Transform puntoAgarre)
     {
+        if(Audiomanager!=null)
+        Audiomanager.seleccionAudio(0);
+
         estaSostenida = true;
         rb.isKinematic = true; 
         col.isTrigger = true;  

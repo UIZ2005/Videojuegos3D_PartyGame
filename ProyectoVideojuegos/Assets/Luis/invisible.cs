@@ -23,8 +23,10 @@ public class invisible : PowerUp
     private GameObject player;
     private MeshRenderer[] meshRenderers;
     private Material[][] materialesOriginales;
+    private audiomanager Audiomanager;
     void Start()
     {
+        Audiomanager = FindAnyObjectByType<audiomanager>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         escalaOriginal = transform.localScale;
@@ -37,6 +39,8 @@ public class invisible : PowerUp
     }
     public override void SerRecogido(Transform puntoAgarre)
     {
+        if (Audiomanager != null)
+            Audiomanager.seleccionAudio(0);
         rb.isKinematic = true;
         col.isTrigger = true;
         player = puntoAgarre.root.gameObject;
