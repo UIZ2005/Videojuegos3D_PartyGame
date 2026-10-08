@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class invisible : PowerUp
 {
@@ -8,7 +9,8 @@ public class invisible : PowerUp
     public float disolverDuration = 2f;
     public float duracionInvisibilidad=5f;
     public float disolverStrength;
-    public Material disolveMaterial;
+    public Material[] disolveMaterials;
+    private Material disolveMaterial;
 
     [Header("visual")]
     public GameObject objvisual;
@@ -44,6 +46,7 @@ public class invisible : PowerUp
         rb.isKinematic = true;
         col.isTrigger = true;
         player = puntoAgarre.root.gameObject;
+        disolveMaterial = disolveMaterials[player.GetComponent<movePlayer>().numplayer];
         meshRenderers = player.GetComponentsInChildren<MeshRenderer>();
         materialesOriginales = new Material[meshRenderers.Length][];
 

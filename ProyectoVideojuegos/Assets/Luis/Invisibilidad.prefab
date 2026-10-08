@@ -184,8 +184,14 @@ MonoBehaviour:
   disolverDuration: 2
   duracionInvisibilidad: 5
   disolverStrength: 1
-  disolveMaterial: {fileID: 2100000, guid: 5020fb6b1aec85e4e85508c57781c2ff, type: 2}
+  disolveMaterials:
+  - {fileID: 2100000, guid: 7c20afcb66181814088282abc5284dad, type: 2}
+  - {fileID: 2100000, guid: 7c20afcb66181814088282abc5284dad, type: 2}
+  - {fileID: 2100000, guid: 962ade9f4a5260a4398dc79d6b91c2c4, type: 2}
+  - {fileID: 2100000, guid: 73fb9887fe18b6d48aa1b0d01c548b0c, type: 2}
+  - {fileID: 2100000, guid: e8c2244e960dc584ba54648291f294f8, type: 2}
   objvisual: {fileID: 6798990734590837666}
+  escalaPequena: 0.5
 --- !u!54 &7394338589896815904
 Rigidbody:
   m_ObjectHideFlags: 0
