@@ -15,6 +15,9 @@ public class movePlayer : MonoBehaviour
     public float rotationSpeed = 15f;
     public Camera camara;
 
+    [Header("Objetivos")]
+    public GameObject canvaObj;
+
     private Rigidbody rb;
 
 

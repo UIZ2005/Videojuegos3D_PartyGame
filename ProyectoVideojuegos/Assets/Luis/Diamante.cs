@@ -23,6 +23,7 @@ public class Diamante : MonoBehaviour
     {
         if (other.CompareTag("Player") && !inplayer)
         {
+            other.GetComponent<movePlayer>().canvaObj.SetActive(true);
             col.isTrigger = true;
             rb.isKinematic = true;
             playertransfomr = other.transform;
@@ -41,7 +42,7 @@ public class Diamante : MonoBehaviour
     {
         if (!inplayer || playertransfomr == null)
             return;
-
+        playertransfomr.GetComponent<movePlayer>().canvaObj.SetActive(false);
         StartCoroutine(hitdiamon());
     }
 
