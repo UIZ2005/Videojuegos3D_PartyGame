@@ -558,6 +558,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &770794106 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8093303236829948845, guid: c957595bc42d3b54d822ea909e240461, type: 3}
+  m_PrefabInstance: {fileID: 2193500605731735433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &786871066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,9 +575,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_basic Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4278800878435510141, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6852259481946134854, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.449
       objectReference: {fileID: 0}
     - target: {fileID: 6852259481946134854, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -580,7 +589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6852259481946134854, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4.651
       objectReference: {fileID: 0}
     - target: {fileID: 6852259481946134854, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1181,6 +1190,7 @@ MonoBehaviour:
   jumpForce: 0
   rotationSpeed: 0
   camara: {fileID: 0}
+  canvaObj: {fileID: 0}
   puntoPiso: {fileID: 4111595439384263897}
   groundCheckRadius: 0.2
   piso:
@@ -1263,13 +1273,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 740028674581779857, guid: c957595bc42d3b54d822ea909e240461, type: 3}
+      propertyPath: modeloLiana
+      value: 
+      objectReference: {fileID: 770794106}
+    - target: {fileID: 740028674581779857, guid: c957595bc42d3b54d822ea909e240461, type: 3}
+      propertyPath: longitudModeloLiana
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1723423768337841114, guid: c957595bc42d3b54d822ea909e240461, type: 3}
       propertyPath: m_Name
       value: Gancho
       objectReference: {fileID: 0}
+    - target: {fileID: 4256100844110761860, guid: c957595bc42d3b54d822ea909e240461, type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
     - target: {fileID: 6655480056129307924, guid: c957595bc42d3b54d822ea909e240461, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.51108
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6655480056129307924, guid: c957595bc42d3b54d822ea909e240461, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1277,7 +1299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655480056129307924, guid: c957595bc42d3b54d822ea909e240461, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6655480056129307924, guid: c957595bc42d3b54d822ea909e240461, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1306,10 +1328,6 @@ PrefabInstance:
     - target: {fileID: 6655480056129307924, guid: c957595bc42d3b54d822ea909e240461, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6655480056129307924, guid: c957595bc42d3b54d822ea909e240461, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1616,7 +1634,6 @@ SceneRoots:
   - {fileID: 276331634}
   - {fileID: 2691515715441629254}
   - {fileID: 5716021214111010844}
-  - {fileID: 2193500605731735433}
   - {fileID: 1737803602}
   - {fileID: 1673560920133776750}
   - {fileID: 1537265796}
@@ -1625,3 +1642,4 @@ SceneRoots:
   - {fileID: 1431043969}
   - {fileID: 469285804}
   - {fileID: 786871066}
+  - {fileID: 2193500605731735433}

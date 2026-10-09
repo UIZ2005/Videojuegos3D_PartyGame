@@ -9,12 +9,14 @@ public class Gancho : PowerUp
     [SerializeField] private LayerMask capasEnganchables;
 
     [Header("Visual")]
-    [SerializeField] private LineRenderer liana;
+    [SerializeField] private Transform modeloLiana;
+    [SerializeField] private float longitudModeloLiana = 1f;
     [SerializeField] float escalaPequena = 0.5f;
 
     private audiomanager Audiomanager;
 
     private Vector3 escalaOriginal;
+    private Vector3 escalaOriginalLiana;
 
     private Rigidbody rb;
     private Collider col;
@@ -30,15 +32,18 @@ public class Gancho : PowerUp
     private void Awake()
     {
         Audiomanager = FindAnyObjectByType<audiomanager>();
+
         escalaOriginal = transform.localScale;
-        diamante =FindAnyObjectByType<Diamante>();
+
+        diamante = FindAnyObjectByType<Diamante>();
+
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
 
-        if (liana != null)
+        if (modeloLiana != null)
         {
-            liana.positionCount = 2;
-            liana.enabled = false;
+            escalaOriginalLiana = modeloLiana.localScale;
+            modeloLiana.gameObject.SetActive(false);
         }
     }
 
@@ -51,6 +56,7 @@ public class Gancho : PowerUp
     {
         if (Audiomanager != null)
             Audiomanager.seleccionAudio(0);
+
         estaSostenido = true;
 
         jugador = puntoAgarre.root;
@@ -68,7 +74,9 @@ public class Gancho : PowerUp
 
         transform.localRotation =
             Quaternion.identity;
-        transform.localScale = escalaOriginal * escalaPequena;
+
+        transform.localScale =
+            escalaOriginal * escalaPequena;
     }
 
 
@@ -86,7 +94,8 @@ public class Gancho : PowerUp
         rb.isKinematic = true;
         col.isTrigger = true;
 
-        direccionUso = movimientoJugador.camara.transform.forward;
+        direccionUso =
+            movimientoJugador.camara.transform.forward;
 
         if (direccionUso.sqrMagnitude < 0.01f)
         {
@@ -106,9 +115,15 @@ public class Gancho : PowerUp
             capasEnganchables
         ))
         {
-            if (diamante != null) { 
-            if (hit.collider.CompareTag("Player") && hit.collider.gameObject.GetComponent<movePlayer>().condiamante)
-                diamante.soltardiamante();
+            if (diamante != null)
+            {
+                if (hit.collider.CompareTag("Player") &&
+                    hit.collider.gameObject
+                        .GetComponent<movePlayer>()
+                        .condiamante)
+                {
+                    diamante.soltardiamante();
+                }
             }
 
             StartCoroutine(
@@ -117,7 +132,9 @@ public class Gancho : PowerUp
         }
         else
         {
-            Debug.Log("El gancho no encontró ningún objetivo.");
+            Debug.Log(
+                "El gancho no encontró ningún objetivo."
+            );
 
             DestruirGancho();
         }
@@ -138,20 +155,10 @@ public class Gancho : PowerUp
             movimientoJugador.activarquieto();
         }
 
-        // Mostrar liana.
-        if (liana != null)
+        // Activar modelo de la liana.
+        if (modeloLiana != null)
         {
-            liana.enabled = true;
-
-            liana.SetPosition(
-                0,
-                jugador.position
-            );
-
-            liana.SetPosition(
-                1,
-                puntoObjetivo
-            );
+            modeloLiana.gameObject.SetActive(true);
         }
 
         while (true)
@@ -166,8 +173,10 @@ public class Gancho : PowerUp
                 break;
 
             Vector3 direccion =
-                (puntoObjetivo -
-                 jugador.position).normalized;
+                (
+                    puntoObjetivo -
+                    jugador.position
+                ).normalized;
 
             // Mover directamente al jugador.
             jugador.position +=
@@ -175,19 +184,10 @@ public class Gancho : PowerUp
                 velocidadAtraccion *
                 Time.deltaTime;
 
-            // Mantener la liana conectada.
-            if (liana != null)
-            {
-                liana.SetPosition(
-                    0,
-                    jugador.position
-                );
-
-                liana.SetPosition(
-                    1,
-                    puntoObjetivo
-                );
-            }
+            ActualizarLiana(
+                jugador.position,
+                puntoObjetivo
+            );
 
             yield return null;
         }
@@ -211,16 +211,60 @@ public class Gancho : PowerUp
         DestruirGancho();
     }
 
+    // =========================================================
+    // ACTUALIZAR LIANA
+    // =========================================================
+
+    private void ActualizarLiana(
+        Vector3 puntoInicio,
+        Vector3 puntoFinal
+    )
+    {
+        if (modeloLiana == null)
+            return;
+
+        Vector3 direccion =
+            puntoFinal - puntoInicio;
+
+        float distancia =
+            direccion.magnitude;
+
+        if (distancia <= 0.01f)
+            return;
+
+        // La base de la liana sigue al jugador.
+        modeloLiana.position =
+            puntoInicio;
+
+        // El eje Y de la liana apunta hacia el objetivo.
+        modeloLiana.rotation =
+            Quaternion.FromToRotation(
+                Vector3.up,
+                direccion.normalized
+            );
+
+        // Escalar únicamente en Y.
+        Vector3 escala =
+            escalaOriginalLiana;
+
+        escala.y =
+            escalaOriginalLiana.y *
+            (distancia / longitudModeloLiana);
+
+        modeloLiana.localScale =
+            escala;
+    }
+
+
     private void DestruirGancho()
     {
-        if (liana != null)
+        if (modeloLiana != null)
         {
-            liana.enabled = false;
+            modeloLiana.gameObject.SetActive(false);
         }
 
         Destroy(gameObject);
     }
-
 
     private void OnDrawGizmosSelected()
     {
