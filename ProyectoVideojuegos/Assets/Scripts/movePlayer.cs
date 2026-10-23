@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -10,6 +11,14 @@ public class movePlayer : MonoBehaviour
     [Header("Movimiento")]
     public float speed = 5f;
     public float jumpForce = 5f;
+    public float dashForce = 12f;
+    public float dashDuration = 0.15f;
+    public float dashCooldown = 1f;
+
+    private bool haciendoDash = false;
+    private bool dashDisponible = true;
+
+
 
     [Header("Mira")]
     public float rotationSpeed = 15f;
@@ -61,6 +70,18 @@ public class movePlayer : MonoBehaviour
     private void OnMove(InputValue context)
     {
         moveInput = context.Get<Vector2>();
+    }
+
+    private void OnSprint(InputValue context)
+    {
+        if (!context.isPressed) return;
+
+        if (!dashDisponible) return;
+        if (haciendoDash) return;
+        if (quieto) return;
+        if (haciendoGroundPound) return;
+
+        StartCoroutine(Dash());
     }
 
     // La acción Look debe estar vinculada al mouse.
@@ -179,6 +200,9 @@ public class movePlayer : MonoBehaviour
     private void FixedUpdate()
     {
         if (quieto) return;
+        if (haciendoDash)
+            return;
+
         if (camara == null) return;
 
         if (haciendoGroundPound)
@@ -232,6 +256,59 @@ public class movePlayer : MonoBehaviour
             rb.MoveRotation(nuevaRotacion);
         }
     }
+    IEnumerator Dash()
+    {
+        dashDisponible = false;
+        haciendoDash = true;
+
+        // Dirección del dash basada en el movimiento del jugador
+        Vector3 direccionDash;
+
+        // Dirección relativa a la cámara
+        Vector3 direccionAdelante = camara.transform.forward;
+        Vector3 direccionDerecha = camara.transform.right;
+
+        direccionAdelante.y = 0f;
+        direccionDerecha.y = 0f;
+
+        direccionAdelante.Normalize();
+        direccionDerecha.Normalize();
+
+        direccionDash =
+            direccionDerecha * moveInput.x +
+            direccionAdelante * moveInput.y;
+
+        // Si no hay input, dash hacia donde mira el jugador
+        if (direccionDash.sqrMagnitude < 0.01f)
+        {
+            direccionDash = transform.forward;
+        }
+
+        direccionDash.Normalize();
+
+        // Mantener la velocidad vertical actual
+        Vector3 velocidadDash = direccionDash * dashForce;
+        velocidadDash.y = rb.linearVelocity.y;
+
+        rb.linearVelocity = velocidadDash;
+
+        // Rotar hacia la dirección del dash
+        Quaternion rotacionObjetivo =
+            Quaternion.LookRotation(direccionDash, Vector3.up);
+
+        rb.MoveRotation(rotacionObjetivo);
+
+        yield return new WaitForSeconds(dashDuration);
+
+        haciendoDash = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+
+        dashDisponible = true;
+    }
+
+
+
 
     public void activarquieto()
     {
