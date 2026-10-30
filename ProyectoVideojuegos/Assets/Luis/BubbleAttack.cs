@@ -19,7 +19,6 @@ public class BubbleAttack : MonoBehaviour
     private Transform jugadorTransform;
 
     private bool tieneJugador = false;
-    private bool explotando = false;
 
     private Vector3 escalaOriginalJugador;
 

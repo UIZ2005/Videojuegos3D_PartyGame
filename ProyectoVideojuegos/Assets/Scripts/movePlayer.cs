@@ -18,6 +18,11 @@ public class movePlayer : MonoBehaviour
     private bool haciendoDash = false;
     private bool dashDisponible = true;
 
+    [Header("Cooldown Ataque")]
+    public float attackCooldown = 3f;
+    private bool ataqueDisponible = true;
+
+
     [Header("burbuja")]
     public GameObject burbujaPrefab;
     public Transform puntoAtaque;
@@ -26,6 +31,7 @@ public class movePlayer : MonoBehaviour
     [Header("Mira")]
     public float rotationSpeed = 15f;
     public Camera camara;
+    public bool apuntar=false;
 
     [Header("Objetivos")]
     public GameObject canvaObj;
@@ -72,11 +78,28 @@ public class movePlayer : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    private void OnMira(InputValue context)
+    {
+        if (!context.isPressed) return;
+
+        if (apuntar)
+        {
+            apuntar = false;
+        }
+        else
+        {
+            apuntar = true;
+        }
+        Debug.Log(apuntar);
+    }
+
     //ATAQUES ESPECIALES SEGUN EL ESPIRITU ELEGIDO
 
     private void OnAttack(InputValue context)
     {
         if (!context.isPressed) return;
+
+        if (!ataqueDisponible) return;
 
         if (quieto)
             return;
@@ -94,7 +117,7 @@ public class movePlayer : MonoBehaviour
                 GameObject ataque = Instantiate(
                     burbujaPrefab,
                     puntoAtaque.position,
-                    camara.transform.rotation
+                    puntoAtaque.rotation
                 );
 
                 BubbleAttack burbuja = ataque.GetComponent<BubbleAttack>();
@@ -110,8 +133,17 @@ public class movePlayer : MonoBehaviour
                 //rayo
                 break;
         }
+        StartCoroutine(CooldownAttack());
     }
 
+    IEnumerator CooldownAttack()
+    {
+        ataqueDisponible = false;
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        ataqueDisponible = true;
+    }
     private void OnMove(InputValue context)
     {
         if (quieto) return;
@@ -290,7 +322,11 @@ public class movePlayer : MonoBehaviour
         rb.linearVelocity = velocidad;
 
         // Rotar al jugador hacia donde se mueve.
-        if (movimiento.sqrMagnitude > 0.01f)
+        if (apuntar)
+        {
+            RotarJugadorConCamara();
+        }else if (movimiento.sqrMagnitude > 0.01f)
+
         {
             Quaternion rotacionObjetivo =
                 Quaternion.LookRotation(movimiento, Vector3.up);
@@ -304,6 +340,35 @@ public class movePlayer : MonoBehaviour
             rb.MoveRotation(nuevaRotacion);
         }
     }
+
+    private void RotarJugadorConCamara()
+    {
+        if (camara == null)
+            return;
+
+        Vector3 direccionCamara = camara.transform.forward;
+
+        // Ignoramos la inclinación vertical de la cámara.
+        direccionCamara.y = 0f;
+
+        if (direccionCamara.sqrMagnitude < 0.01f)
+            return;
+
+        direccionCamara.Normalize();
+
+        Quaternion rotacionObjetivo =
+            Quaternion.LookRotation(direccionCamara, Vector3.up);
+
+        Quaternion nuevaRotacion = Quaternion.Slerp(
+            rb.rotation,
+            rotacionObjetivo,
+            rotationSpeed * Time.fixedDeltaTime
+        );
+
+        rb.MoveRotation(nuevaRotacion);
+    }
+
+
     IEnumerator Dash()
     {
         dashDisponible = false;
