@@ -137,6 +137,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3364868809655531817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5780824737090185569}
+  m_Layer: 7
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5780824737090185569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364868809655531817}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6852259481946134854}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3436771231846712987
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,15 +353,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1167131949367865722, guid: 7be119000360eca409c0653606ded726, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.912859
+      value: -5.449
       objectReference: {fileID: 0}
     - target: {fileID: 1167131949367865722, guid: 7be119000360eca409c0653606ded726, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.38
+      value: 0.513
       objectReference: {fileID: 0}
     - target: {fileID: 1167131949367865722, guid: 7be119000360eca409c0653606ded726, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.4784563
+      value: 4.651
       objectReference: {fileID: 0}
     - target: {fileID: 1167131949367865722, guid: 7be119000360eca409c0653606ded726, type: 3}
       propertyPath: m_LocalRotation.w
@@ -433,6 +464,14 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5467335039410898622, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: puntoAtaque
+      value: 
+      objectReference: {fileID: 5780824737090185569}
+    - target: {fileID: 5467335039410898622, guid: 7be119000360eca409c0653606ded726, type: 3}
+      propertyPath: burbujaPrefab
+      value: 
+      objectReference: {fileID: 2408513993598698343, guid: ef560d899ecd3764b8a87e32d0db4deb, type: 3}
+    - target: {fileID: 5467335039410898622, guid: 7be119000360eca409c0653606ded726, type: 3}
       propertyPath: players.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -513,11 +552,35 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1167131949367865722, guid: 7be119000360eca409c0653606ded726, type: 3}
       insertIndex: 2
       addedObject: {fileID: 8642304549228108184}
+    - targetCorrespondingSourceObject: {fileID: 1167131949367865722, guid: 7be119000360eca409c0653606ded726, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5780824737090185569}
     - targetCorrespondingSourceObject: {fileID: 6813355359429006451, guid: 7be119000360eca409c0653606ded726, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9100267089753799883}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5706058640084182201, guid: 7be119000360eca409c0653606ded726, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5038069900804788535}
   m_SourcePrefab: {fileID: 100100000, guid: 7be119000360eca409c0653606ded726, type: 3}
+--- !u!1 &1583276609440901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5706058640084182201, guid: 7be119000360eca409c0653606ded726, type: 3}
+  m_PrefabInstance: {fileID: 5704479504163350588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5038069900804788535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583276609440901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b1077ad49e1fc498c5538103eecacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StunSystem
+  estaStuneado: 0
 --- !u!224 &1272134383941336143 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6813355359429006451, guid: 7be119000360eca409c0653606ded726, type: 3}

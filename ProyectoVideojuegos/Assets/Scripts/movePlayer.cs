@@ -18,6 +18,9 @@ public class movePlayer : MonoBehaviour
     private bool haciendoDash = false;
     private bool dashDisponible = true;
 
+    [Header("burbuja")]
+    public GameObject burbujaPrefab;
+    public Transform puntoAtaque;
 
 
     [Header("Mira")]
@@ -65,10 +68,53 @@ public class movePlayer : MonoBehaviour
         // Evita que las colisiones inclinen al jugador.
         rb.constraints |= RigidbodyConstraints.FreezeRotationX
                         | RigidbodyConstraints.FreezeRotationZ;
+
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    //ATAQUES ESPECIALES SEGUN EL ESPIRITU ELEGIDO
+
+    private void OnAttack(InputValue context)
+    {
+        if (!context.isPressed) return;
+
+        if (quieto)
+            return;
+
+        if (haciendoGroundPound)
+            return;
+
+        if (haciendoDash)
+            return;
+
+        switch (numplayer)
+        {
+            case 1:
+                //agua
+                GameObject ataque = Instantiate(
+                    burbujaPrefab,
+                    puntoAtaque.position,
+                    camara.transform.rotation
+                );
+
+                BubbleAttack burbuja = ataque.GetComponent<BubbleAttack>();
+                burbuja.Inicializar(numplayer);
+                break;
+            case 2:
+                //fuego
+                break;
+            case 3:
+                //aire
+                break;
+            case 4:
+                //rayo
+                break;
+        }
     }
 
     private void OnMove(InputValue context)
     {
+        if (quieto) return;
         moveInput = context.Get<Vector2>();
     }
 
@@ -92,6 +138,7 @@ public class movePlayer : MonoBehaviour
 
     private void OnJump(InputValue context)
     {
+        if (quieto) return;
         if (estaPiso)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -100,6 +147,7 @@ public class movePlayer : MonoBehaviour
 
     private void OnInteract(InputValue context)
     {
+        if (quieto) return;
         if (!context.isPressed) return;
 
         if (poderSostenido != null)
