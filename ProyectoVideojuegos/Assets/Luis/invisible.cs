@@ -11,6 +11,8 @@ public class invisible : PowerUp
     public float disolverStrength;
     public Material[] disolveMaterials;
     private Material disolveMaterial;
+    private AudioSource audioitem;
+    public AudioClip clip;
 
     [Header("visual")]
     public GameObject objvisual;
@@ -28,6 +30,7 @@ public class invisible : PowerUp
     private audiomanager Audiomanager;
     void Start()
     {
+        audioitem = GetComponent<AudioSource>();
         Audiomanager = FindAnyObjectByType<audiomanager>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
@@ -64,6 +67,8 @@ public class invisible : PowerUp
     {
         if (yaUsado)
             return;
+
+        audioitem.PlayOneShot(clip);
         yaUsado = true;
         objvisual.SetActive(false);
 

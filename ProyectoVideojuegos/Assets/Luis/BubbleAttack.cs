@@ -9,6 +9,8 @@ public class BubbleAttack : MonoBehaviour
     [Header("Stun")]
     public float duracionStun = 2f;
     private Animator burbujaanim;
+    public AudioClip audioClip;
+    private AudioSource audioSource;
 
     [Header("Jugador dentro de la burbuja")]
     public float velocidadRotacion = 180f;
@@ -29,6 +31,7 @@ public class BubbleAttack : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         burbujaanim = GetComponent<Animator>();
         Destroy(gameObject, tiempoVida);
     }
@@ -66,6 +69,7 @@ public class BubbleAttack : MonoBehaviour
         if (jugador.numplayer == jugadorOrigen)
             return;
 
+        audioSource.PlayOneShot(audioClip);
         AtraparJugador(jugador);
     }
 

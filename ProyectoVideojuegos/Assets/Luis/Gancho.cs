@@ -7,6 +7,8 @@ public class Gancho : PowerUp
     [SerializeField] private float alcance = 20f;
     [SerializeField] private float velocidadAtraccion = 15f;
     [SerializeField] private LayerMask capasEnganchables;
+    private AudioSource audioitem;
+    public AudioClip clip;
 
     [Header("Visual")]
     [SerializeField] private Transform modeloLiana;
@@ -31,6 +33,8 @@ public class Gancho : PowerUp
 
     private void Awake()
     {
+        audioitem = GetComponent<AudioSource>();
+
         Audiomanager = FindAnyObjectByType<audiomanager>();
 
         escalaOriginal = transform.localScale;
@@ -85,6 +89,7 @@ public class Gancho : PowerUp
         if (yaUsado)
             return;
 
+        audioitem.PlayOneShot(clip);
         yaUsado = true;
         estaSostenido = false;
 
