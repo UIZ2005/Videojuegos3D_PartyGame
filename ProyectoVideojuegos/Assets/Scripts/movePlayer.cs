@@ -27,14 +27,14 @@ public class movePlayer : MonoBehaviour
     public Transform puntoAtaque;
 
     [Header("Rayo (Player 4)")]
-    public float rayoDashForce = 80f; 
-    public float rayoDashDuration = 0.25f;
+    public float rayoDashForce = 80f;
+    public float rayoDashDuration = 0.2f;
     public GameObject particulasRayoPrefab; 
 
     [Header("Mira")]
     public float rotationSpeed = 15f;
     public Camera camara;
-    public bool apuntar=false;
+    public bool apuntar = false;
 
     [Header("Objetivos")]
     public GameObject canvaObj;
@@ -61,7 +61,7 @@ public class movePlayer : MonoBehaviour
     [Header("attach diamante")]
     public Transform diamante;
     private PowerUp poderSostenido;
-    private bool quieto=false;
+    private bool quieto = false;
     public bool condiamante = false;
 
     [Header("Skins")]
@@ -91,8 +91,7 @@ public class movePlayer : MonoBehaviour
         switch (numplayer)
         {
             case 1:
-                //agua
-                attackCooldown = 3f; // Cooldown normal para el agua
+                attackCooldown = 3f;
                 GameObject ataque = Instantiate(
                     burbujaPrefab,
                     puntoAtaque.position,
@@ -102,13 +101,10 @@ public class movePlayer : MonoBehaviour
                 burbuja.Inicializar(numplayer);
                 break;
             case 2:
-                //fuego
                 break;
             case 3:
-                //aire
                 break;
             case 4:
-                //rayo
                 attackCooldown = 6f;
                 StartCoroutine(DashRayoEspecial());
                 break;
@@ -127,14 +123,12 @@ public class movePlayer : MonoBehaviour
     {
         haciendoDash = true; 
 
-        // 1. Instanciar partículas y pegarlas al jugador
         GameObject rastroParticulas = null;
         if (particulasRayoPrefab != null)
         {
             rastroParticulas = Instantiate(particulasRayoPrefab, transform.position, transform.rotation, transform);
         }
 
-        // 2. Calcular dirección hacia donde mira la cámara
         Vector3 direccionAdelante = camara.transform.forward;
         Vector3 direccionDerecha = camara.transform.right;
         direccionAdelante.y = 0f; direccionDerecha.y = 0f;
@@ -144,19 +138,16 @@ public class movePlayer : MonoBehaviour
         if (direccionDash.sqrMagnitude < 0.01f) direccionDash = transform.forward;
         direccionDash.Normalize();
 
-        // 3. Aplicar velocidad extrema
         Vector3 velocidadDash = direccionDash * rayoDashForce;
         velocidadDash.y = rb.linearVelocity.y;
         rb.linearVelocity = velocidadDash;
 
         rb.MoveRotation(Quaternion.LookRotation(direccionDash, Vector3.up));
 
-        // 4. Esperar el tiempo flash
         yield return new WaitForSeconds(rayoDashDuration);
 
         haciendoDash = false;
 
-        // 5. Desemparentar partículas para dejar el rastro en el camino y detener la emisión
         if (rastroParticulas != null)
         {
             rastroParticulas.transform.SetParent(null);
@@ -344,6 +335,7 @@ public class movePlayer : MonoBehaviour
         moveInput = Vector2.zero;
         rb.linearVelocity = Vector3.zero;
     }
+
     public void desactivarquieto()
     {
         quieto = false;

@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/cris/EscenaSeleccion.unity
+    guid: 113d8b1c2388dd6499d42a30de3aae70
+  - enabled: 1
+    path: Assets/cris/EscenaJuego.unity
+    guid: e304611ec86975e47b7f4fb4a506d3fe
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
