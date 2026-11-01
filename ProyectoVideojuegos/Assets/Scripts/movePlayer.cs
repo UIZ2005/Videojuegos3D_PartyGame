@@ -90,7 +90,7 @@ public class movePlayer : MonoBehaviour
 
         switch (numplayer)
         {
-            case 4:
+            case 1:
                 //agua
                 attackCooldown = 3f; // Cooldown normal para el agua
                 GameObject ataque = Instantiate(
@@ -107,7 +107,7 @@ public class movePlayer : MonoBehaviour
             case 3:
                 //aire
                 break;
-            case 1:
+            case 4:
                 //rayo
                 attackCooldown = 6f;
                 StartCoroutine(DashRayoEspecial());
