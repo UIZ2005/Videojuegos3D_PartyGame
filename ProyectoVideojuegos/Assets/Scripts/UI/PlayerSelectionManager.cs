@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerSelectionManager : MonoBehaviour
 {
@@ -16,13 +17,28 @@ public class PlayerSelectionManager : MonoBehaviour
         public int joinedFrame;
     }
 
-    [Header("Paneles de los jugadores")]
+    [Header("Paneles y UI de los jugadores")]
     public GameObject[] playerPanels = new GameObject[4];
     public Image[] playerImages = new Image[4];
+
+    [Header("Textos informativos (TMP)")]
+    public TextMeshProUGUI[] nombreTextos = new TextMeshProUGUI[4];         // 1. Nombre del personaje
+    public TextMeshProUGUI[] habilidadTextos = new TextMeshProUGUI[4];     // 2. Nombre de la habilidad
+    public TextMeshProUGUI[] descripcionTextos = new TextMeshProUGUI[4];   // 3. Descripción de la habilidad
 
     [Header("Personajes disponibles")]
     public Sprite[] characterSprites;
     public GameObject[] characterPrefabs;
+
+    // Listas separadas para evitar prefijos innecesarios
+    private string[] nombresPersonajes = { "Agua", "Fuego", "Viento", "Rayo" };
+    private string[] nombresHabilidades = { "Burbuja Trampa", "Embestida Ígnea", "Impulso Aéreo", "Salto Relámpago" };
+    private string[] descripcionesHabilidades = {
+        "Atrapa e inmoviliza a un rival.",
+        "Dash frontal envuelto en llamas.",
+        "Un segundo salto en el aire.",
+        "Teletransporte rápido hacia adelante."
+    };
 
     private PlayerSlot[] players = new PlayerSlot[4];
 
@@ -81,6 +97,21 @@ public class PlayerSelectionManager : MonoBehaviour
             if (playerImages != null && i < playerImages.Length && playerImages[i] != null)
             {
                 playerImages[i].sprite = null;
+            }
+
+            if (nombreTextos != null && i < nombreTextos.Length && nombreTextos[i] != null)
+            {
+                nombreTextos[i].text = "";
+            }
+
+            if (habilidadTextos != null && i < habilidadTextos.Length && habilidadTextos[i] != null)
+            {
+                habilidadTextos[i].text = "";
+            }
+
+            if (descripcionTextos != null && i < descripcionTextos.Length && descripcionTextos[i] != null)
+            {
+                descripcionTextos[i].text = "";
             }
         }
 
@@ -151,7 +182,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
         playerPanels[slot].SetActive(true);
 
-        RefreshPlayerImage(slot);
+        RefreshPlayerUI(slot);
         RefreshStoredSelections();
         UpdateStartButton();
     }
@@ -238,6 +269,9 @@ public class PlayerSelectionManager : MonoBehaviour
 
         playerPanels[playerIndex].SetActive(false);
         playerImages[playerIndex].sprite = null;
+        if (nombreTextos[playerIndex] != null) nombreTextos[playerIndex].text = "";
+        if (habilidadTextos[playerIndex] != null) habilidadTextos[playerIndex].text = "";
+        if (descripcionTextos[playerIndex] != null) descripcionTextos[playerIndex].text = "";
 
         players[playerIndex] = new PlayerSlot();
         players[playerIndex].characterIndex = -1;
@@ -306,7 +340,7 @@ public class PlayerSelectionManager : MonoBehaviour
             if (IsCharacterAvailable(currentIndex, playerIndex))
             {
                 players[playerIndex].characterIndex = currentIndex;
-                RefreshPlayerImage(playerIndex);
+                RefreshPlayerUI(playerIndex);
                 return;
             }
         }
@@ -342,16 +376,35 @@ public class PlayerSelectionManager : MonoBehaviour
         return true;
     }
 
-    private void RefreshPlayerImage(int playerIndex)
+    private void RefreshPlayerUI(int playerIndex)
     {
         int characterIndex = players[playerIndex].characterIndex;
 
         if (characterIndex < 0 || characterIndex >= characterSprites.Length)
         {
             playerImages[playerIndex].sprite = null;
+            if (nombreTextos[playerIndex] != null) nombreTextos[playerIndex].text = "";
+            if (habilidadTextos[playerIndex] != null) habilidadTextos[playerIndex].text = "";
+            if (descripcionTextos[playerIndex] != null) descripcionTextos[playerIndex].text = "";
             return;
         }
+
         playerImages[playerIndex].sprite = characterSprites[characterIndex];
+
+        if (nombreTextos[playerIndex] != null && characterIndex < nombresPersonajes.Length)
+        {
+            nombreTextos[playerIndex].text = nombresPersonajes[characterIndex];
+        }
+
+        if (habilidadTextos[playerIndex] != null && characterIndex < nombresHabilidades.Length)
+        {
+            habilidadTextos[playerIndex].text = nombresHabilidades[characterIndex];
+        }
+
+        if (descripcionTextos[playerIndex] != null && characterIndex < descripcionesHabilidades.Length)
+        {
+            descripcionTextos[playerIndex].text = descripcionesHabilidades[characterIndex];
+        }
     }
 
     private void ConfirmCharacter(int playerIndex)
@@ -366,7 +419,7 @@ public class PlayerSelectionManager : MonoBehaviour
         if (!IsCharacterAvailable(characterIndex, playerIndex))
         {
             players[playerIndex].characterIndex = FindFirstAvailableCharacter();
-            RefreshPlayerImage(playerIndex);
+            RefreshPlayerUI(playerIndex);
             return;
         }
 
@@ -396,7 +449,7 @@ public class PlayerSelectionManager : MonoBehaviour
             if (!IsCharacterAvailable(currentIndex, i))
             {
                 players[i].characterIndex = FindFirstAvailableCharacter();
-                RefreshPlayerImage(i);
+                RefreshPlayerUI(i);
             }
         }
     }
@@ -500,7 +553,6 @@ public class PlayerSelectionManager : MonoBehaviour
             }
         }
 
-        // El botón solo se activa si hay 2 o más jugadores y el 100% de ellos ha confirmado
         button.interactable = (activePlayers >= 2) && (confirmedPlayers == activePlayers);
     }
 }
