@@ -26,6 +26,7 @@ Material:
   m_ModifiedSerializedProperties: 8
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
+  - _ALPHATEST_ON
   - _NORMALMAP
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
@@ -57,7 +58,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClip: 1
     - _Cull: 0
+    - _Metallic: 0
+    - _Smoothness: 0.21
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
