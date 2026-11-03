@@ -97,7 +97,7 @@ public class movePlayer : MonoBehaviour
         if (!context.isPressed) return;
         if (poderElemental != null)
         {
-            //poderElemental.IntentarActivar();
+            poderElemental.IntentarActivar();
             return;
         }
         if (!ataqueDisponible) return;
@@ -288,6 +288,7 @@ public class movePlayer : MonoBehaviour
     private void FixedUpdate()
     {
         if (quieto || haciendoDash) return;
+        if (bloqueadoPorPoder || empujado) return;
         if (camara == null) return;
 
         if (haciendoGroundPound)
@@ -383,5 +384,56 @@ public class movePlayer : MonoBehaviour
         numplayer = jugador;
         players[jugador - 1].SetActive(true);
         anim = players[jugador - 1].GetComponent<Animator>();
+        poderElemental = players[jugador - 1].GetComponent<PoderElemental>();
+
+    }
+
+
+    // PARA PODERES EN SCRIPT APARTE
+
+    public bool PuedeUsarPoder =>
+        !quieto && !haciendoGroundPound && !haciendoDash && !empujado && !bloqueadoPorPoder;
+
+    public void BloquearMovimiento(bool bloquear)
+    {
+        bloqueadoPorPoder = bloquear;
+    }
+
+    public Vector3 DireccionInput()
+    {
+        if (camara == null) return transform.forward;
+
+        Vector3 adelante = camara.transform.forward;
+        Vector3 derecha = camara.transform.right;
+        adelante.y = 0f; derecha.y = 0f;
+        adelante.Normalize(); derecha.Normalize();
+
+        Vector3 dir = derecha * moveInput.x + adelante * moveInput.y;
+        if (dir.sqrMagnitude < 0.01f) dir = transform.forward;
+        dir.y = 0f;
+        return dir.normalized;
+    }
+
+    public void AnimacionTrigger(string nombre)
+    {
+        if (anim != null) anim.SetTrigger(nombre);
+    }
+
+    public void RecibirEmpuje(Vector3 fuerza, float duracion)
+    {
+        if (rutinaEmpuje != null) StopCoroutine(rutinaEmpuje);
+        rutinaEmpuje = StartCoroutine(RutinaEmpuje(fuerza, duracion));
+    }
+
+    IEnumerator RutinaEmpuje(Vector3 fuerza, float duracion)
+    {
+        empujado = true;
+        rb.linearVelocity = Vector3.zero;
+        rb.AddForce(fuerza, ForceMode.VelocityChange);
+
+        yield return new WaitForSeconds(duracion);
+
+        empujado = false;
+        rutinaEmpuje = null;
     }
 }
