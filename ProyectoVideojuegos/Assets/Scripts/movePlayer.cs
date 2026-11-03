@@ -26,6 +26,9 @@ public class movePlayer : MonoBehaviour
     public GameObject burbujaPrefab;
     public Transform puntoAtaque;
 
+    [Header("viento (Player 3)")]
+    private bool segundoSalto = true;
+
     [Header("Rayo (Player 4)")]
     public float rayoDashForce = 80f;
     public float rayoDashDuration = 0.2f;
@@ -118,6 +121,11 @@ public class movePlayer : MonoBehaviour
             case 2:
                 break;
             case 3:
+                if (segundoSalto)
+                {
+                    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    segundoSalto = false;
+                }
                 break;
             case 4:
                 attackCooldown = 6f;
@@ -262,6 +270,7 @@ public class movePlayer : MonoBehaviour
 
         if (estaPiso)
         {
+            segundoSalto = true;
             anim.SetBool("jump", false);
         }
         else
