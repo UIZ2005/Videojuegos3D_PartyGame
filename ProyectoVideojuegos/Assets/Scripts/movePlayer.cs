@@ -98,6 +98,9 @@ public class movePlayer : MonoBehaviour
     private void OnAttack(InputValue context)
     {
         if (!context.isPressed) return;
+        if (poderElemental == null && numplayer > 0 && numplayer <= players.Length)
+            poderElemental = players[numplayer - 1].GetComponent<PoderElemental>();
+
         if (poderElemental != null)
         {
             poderElemental.IntentarActivar();

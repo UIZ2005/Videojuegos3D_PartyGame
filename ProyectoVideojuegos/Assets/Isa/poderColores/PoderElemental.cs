@@ -21,6 +21,7 @@ public abstract class PoderElemental : MonoBehaviour
 
     public void IntentarActivar()
     {
+        Debug.Log("Q presionada. Disponible: " + disponible + " | Puede usar poder: " + jugador.PuedeUsarPoder);
         if (!disponible || !jugador.PuedeUsarPoder) return;
         StartCoroutine(Ciclo());
     }
