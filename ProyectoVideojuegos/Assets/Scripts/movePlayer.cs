@@ -67,7 +67,7 @@ public class movePlayer : MonoBehaviour
     [Header("Skins")]
     public GameObject[] players;
     public int numplayer;
-
+    private Animator anim;
 
     public void Awake()
     {
@@ -167,6 +167,15 @@ public class movePlayer : MonoBehaviour
     {
         if (quieto) return;
         moveInput = context.Get<Vector2>();
+
+        if (moveInput != Vector2.zero)
+        {
+            anim.SetBool("walk", true);
+        }
+        else
+        {
+            anim.SetBool("walk", false);
+        }
     }
 
     private void OnSprint(InputValue context)
@@ -184,6 +193,7 @@ public class movePlayer : MonoBehaviour
     {
         if (quieto) return;
         if (estaPiso) rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
     }
 
     private void OnInteract(InputValue context)
@@ -233,6 +243,15 @@ public class movePlayer : MonoBehaviour
         if (haciendoGroundPound && estaPiso && !estabaEnPiso)
         {
             TerminarGroundPound();
+        }
+
+        if (estaPiso)
+        {
+            anim.SetBool("jump", false);
+        }
+        else
+        {
+            anim.SetBool("jump", true);
         }
     }
 
@@ -305,6 +324,7 @@ public class movePlayer : MonoBehaviour
 
     IEnumerator Dash()
     {
+        anim.SetTrigger("dash");
         dashDisponible = false;
         haciendoDash = true;
 
@@ -331,6 +351,7 @@ public class movePlayer : MonoBehaviour
 
     public void activarquieto()
     {
+        anim.SetBool("walk", false);
         quieto = true;
         moveInput = Vector2.zero;
         rb.linearVelocity = Vector3.zero;
@@ -346,5 +367,6 @@ public class movePlayer : MonoBehaviour
     {
         numplayer = jugador;
         players[jugador - 1].SetActive(true);
+        anim = players[jugador - 1].GetComponent<Animator>();
     }
 }
