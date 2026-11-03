@@ -13,6 +13,10 @@ PrefabInstance:
       value: PlayerAire Variant
       objectReference: {fileID: 0}
     - target: {fileID: 357334282089606786, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 3553078019522882569}
+    - target: {fileID: 357334282089606786, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: dashForce
       value: 12
       objectReference: {fileID: 0}
@@ -64,6 +68,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -79
       objectReference: {fileID: 0}
+    - target: {fileID: 1979903784179918529, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363942739637993913, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5dc52eb8791a63c4ba20b6d86aa7f38d, type: 2}
     - target: {fileID: 4499784430232430067, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -108,8 +120,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7858650026065218447, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+--- !u!95 &3553078019522882569 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3345829151781041238, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+  m_PrefabInstance: {fileID: 2243307464171116639}
+  m_PrefabAsset: {fileID: 0}

@@ -13,6 +13,10 @@ PrefabInstance:
       value: PlayerFuego Variant
       objectReference: {fileID: 0}
     - target: {fileID: 357334282089606786, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 4770812388018606998}
+    - target: {fileID: 357334282089606786, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: dashForce
       value: 12
       objectReference: {fileID: 0}
@@ -64,6 +68,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -79
       objectReference: {fileID: 0}
+    - target: {fileID: 5016938586008127088, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6852259481946134854, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.912859
@@ -108,8 +116,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8091445745962017032, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2ecc5748bc7875043aee83af2a9b3d68, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+--- !u!95 &4770812388018606998 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6209169516335884069, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+  m_PrefabInstance: {fileID: 1449651449347945651}
+  m_PrefabAsset: {fileID: 0}

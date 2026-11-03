@@ -13,6 +13,10 @@ PrefabInstance:
       value: PlayerRayo Variant
       objectReference: {fileID: 0}
     - target: {fileID: 357334282089606786, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2361301975898885124}
+    - target: {fileID: 357334282089606786, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: dashForce
       value: 12
       objectReference: {fileID: 0}
@@ -40,6 +44,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "Lleva el diamante al \npunto de extraccion"
       objectReference: {fileID: 0}
+    - target: {fileID: 1108014842166032140, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1130525335952061044, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -64,6 +72,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -79
       objectReference: {fileID: 0}
+    - target: {fileID: 4230390477770510452, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: afa50dcefb8c5da46b15d5813aa5faf7, type: 2}
     - target: {fileID: 6852259481946134854, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.912859
@@ -113,3 +125,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+--- !u!95 &2361301975898885124 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 620205583114436858, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+  m_PrefabInstance: {fileID: 2908883441332358398}
+  m_PrefabAsset: {fileID: 0}
