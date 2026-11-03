@@ -189,6 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3644963337105640228}
+  - component: {fileID: 4144772453544852563}
   m_Layer: 0
   m_Name: florverde
   m_TagString: Untagged
@@ -217,6 +218,24 @@ Transform:
   - {fileID: 7549959724651729125}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4144772453544852563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169860994386973086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fc4e1cd028c9c4fa0dcab38032da5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjetoDeColor
+  colorAsignado: 1
+  tiempoParpadeo: 1
+  velocidadParpadeo: 0.1
+  capaJugadores:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &4543720254113888056
 GameObject:
   m_ObjectHideFlags: 0
