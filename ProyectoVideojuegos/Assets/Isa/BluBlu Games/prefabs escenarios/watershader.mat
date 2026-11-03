@@ -59,7 +59,7 @@ Material:
     - _Velocidad_Onda: 3
     - _Viscosidad_Onda: 5
     m_Colors:
-    - _Base_Color: {r: 0.5092987, g: 0.80257237, b: 0.8792453, a: 1}
+    - _Base_Color: {r: 0.019607814, g: 0.6955519, b: 0.93333334, a: 1}
     - _Color_Onda: {r: 0.6943752, g: 0.8237987, b: 0.8867924, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
