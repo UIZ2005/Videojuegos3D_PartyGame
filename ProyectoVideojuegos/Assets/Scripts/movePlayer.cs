@@ -67,7 +67,17 @@ public class movePlayer : MonoBehaviour
     [Header("Skins")]
     public GameObject[] players;
     public int numplayer;
-    private Animator anim;
+    public Animator anim;
+
+
+
+    // poder de dash fuego
+   
+    private PoderElemental poderElemental;
+    private bool bloqueadoPorPoder = false;
+    private bool empujado = false;
+    private Coroutine rutinaEmpuje;
+
 
     public void Awake()
     {
@@ -85,6 +95,11 @@ public class movePlayer : MonoBehaviour
     private void OnAttack(InputValue context)
     {
         if (!context.isPressed) return;
+        if (poderElemental != null)
+        {
+            //poderElemental.IntentarActivar();
+            return;
+        }
         if (!ataqueDisponible) return;
         if (quieto || haciendoGroundPound || haciendoDash) return;
 
