@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GroundPound : PowerUp
@@ -20,8 +21,11 @@ public class GroundPound : PowerUp
 
     private movePlayer jugador;
 
+    private Rigidbody rb;
+
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         Audiomanager = FindAnyObjectByType<audiomanager>();   
     }
     public override bool PuedeSerRecogido()
@@ -38,7 +42,7 @@ public class GroundPound : PowerUp
 
         transform.position = puntoAgarre.position;
         transform.SetParent(puntoAgarre);
-
+        rb.isKinematic = true;
         jugador = puntoAgarre.GetComponentInParent<movePlayer>();
     }
 
@@ -56,6 +60,7 @@ public class GroundPound : PowerUp
         velocidadCaida,
         this);
 
+        Destroy(gameObject, 2f);
     }
 
     public void EjecutarImpacto(Vector3 posicionImpacto)
