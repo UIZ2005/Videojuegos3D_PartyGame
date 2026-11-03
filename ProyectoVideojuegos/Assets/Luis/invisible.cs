@@ -71,7 +71,7 @@ public class invisible : PowerUp
         }
 
         // Seleccionar material de disolución según el jugador.
-        disolveMaterial = disolveMaterials[jugador.numplayer - 1];
+        disolveMaterial = disolveMaterials[jugador.numplayer];
 
         // Obtener TODOS los Renderer del jugador.
         // Esto incluye MeshRenderer y SkinnedMeshRenderer.
