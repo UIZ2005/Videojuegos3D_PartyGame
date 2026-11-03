@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +14,9 @@ public class NivelManager : MonoBehaviour
         {
             GameObject prefabJugador = PlayerSelectionManager.SelectedPlayerPrefabs[i];
             InputDevice dispositivo = PlayerSelectionManager.SelectedPlayerDevices[i];
-            
+
+            prefabJugador.GetComponentInChildren<CinemachineInputAxisController>().PlayerIndex = i;
+
             PlayerInput inputJugador = PlayerInput.Instantiate(prefabJugador, pairWithDevice: dispositivo);
             GameObject nuevoJugador = inputJugador.gameObject;
             

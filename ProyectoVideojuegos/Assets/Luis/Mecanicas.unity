@@ -587,6 +587,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.8897624
       objectReference: {fileID: 0}
+    - target: {fileID: 5016938586008127088, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6728135381244154229, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1299,6 +1303,7 @@ MonoBehaviour:
   condiamante: 0
   players: []
   numplayer: 0
+  anim: {fileID: 0}
 --- !u!1001 &1673560920133776750
 PrefabInstance:
   m_ObjectHideFlags: 0
