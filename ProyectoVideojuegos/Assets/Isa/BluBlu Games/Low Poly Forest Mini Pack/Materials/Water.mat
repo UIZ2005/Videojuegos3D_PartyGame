@@ -155,7 +155,7 @@ Material:
     - _RippleMultiply: 1.9
     - _RippleSlimness: 0.4
     - _RippleSpeed: 2.8
-    - _Scale: 6.29
+    - _Scale: 5.58
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -181,7 +181,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 0.30447128, g: 0.47149196, b: 0.5622641, a: 0}
+    - _FoamColor: {r: 0.08729795, g: 0.47710183, b: 0.690566, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Vector2: {r: 10, g: 10, b: 0, a: 0}
     - _WaterColor: {r: 1, g: 0.9339622, b: 0.9339622, a: 0}
