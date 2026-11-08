@@ -3,17 +3,18 @@ using UnityEngine;
 public class AnimInicioPlayersd : MonoBehaviour
 {
     public float speed = 2f;
-    public float distance = 24f; // cuánto camina antes de destruirse
+    [HideInInspector] public Vector3 target;
 
-    Vector3 startPos;
-
-    void Start() => startPos = transform.position;
+    void Start()
+    {
+        speed *= Random.Range(0.8f, 1.2f);
+    }
 
     void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        if (transform.position.x - startPos.x > distance)
+        if (transform.position == target)
             Destroy(gameObject);
     }
 }
