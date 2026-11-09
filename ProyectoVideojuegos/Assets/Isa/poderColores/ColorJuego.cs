@@ -6,7 +6,8 @@ public enum ColorJuego
     Azul,
     Verde,
     Morado,
-    Naranja
+    Naranja,
+    rosado
 }
 
 public static class ColorJuegoUtil
