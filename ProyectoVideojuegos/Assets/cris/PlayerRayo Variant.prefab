@@ -72,10 +72,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -79
       objectReference: {fileID: 0}
+    - target: {fileID: 2859719402517776075, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f18883300a64b3f4089a9d1e34794465, type: 2}
     - target: {fileID: 4230390477770510452, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: afa50dcefb8c5da46b15d5813aa5faf7, type: 2}
+      objectReference: {fileID: 2100000, guid: d1186a538dfcb3441aba4b403cdd02f8, type: 2}
     - target: {fileID: 6852259481946134854, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.912859
