@@ -123,10 +123,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5016938586008127088, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6760249911799213134}
   m_SourcePrefab: {fileID: 100100000, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
 --- !u!95 &4770812388018606998 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6209169516335884069, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
   m_PrefabInstance: {fileID: 1449651449347945651}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5873130695629779651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5016938586008127088, guid: 39d60b615185b6546b2bacaa1c93db4b, type: 3}
+  m_PrefabInstance: {fileID: 1449651449347945651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6760249911799213134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5873130695629779651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e089e0f7200cd4ea6391f98b144bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::dashFuego
+  nombrePoder: 
+  cooldown: 4
+  fuerzaDash: 30
+  duracionDash: 0.35
+  radioGolpe: 1.2
+  fuerzaEmpuje: 14
+  fuerzaArriba: 4
+  tiempoAturdido: 0.6
+  capasGolpe:
+    serializedVersion: 2
+    m_Bits: 128
+  particulasFuegoPrefab: {fileID: 8960232075652351181, guid: 2f6bc4218f87de5449136f73ef030a03, type: 3}
+  impactoFuegoPrefab: {fileID: 0}
+  sonidoDash: {fileID: 0}

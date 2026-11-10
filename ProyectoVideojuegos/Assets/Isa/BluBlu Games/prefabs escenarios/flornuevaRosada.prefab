@@ -5180,12 +5180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fc4e1cd028c9c4fa0dcab38032da5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoDeColor
-  colorAsignado: 4
+  colorAsignado: 2
   tiempoParpadeo: 1
   velocidadParpadeo: 0.1
   capaJugadores:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!1 &4035367338056336858 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 492440804577196729, guid: 159331a249bcefe4eb620be73a5bb2dd, type: 3}

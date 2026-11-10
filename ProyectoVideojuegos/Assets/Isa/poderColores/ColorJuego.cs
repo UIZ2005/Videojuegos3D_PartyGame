@@ -4,9 +4,7 @@ using UnityEngine;
 public enum ColorJuego
 {
     Azul,
-    Verde,
     Morado,
-    Naranja,
     rosado
 }
 
@@ -18,9 +16,10 @@ public static class ColorJuegoUtil
     public static Color AColor(ColorJuego c) => c switch
     {
         ColorJuego.Azul    => new Color(0.20f, 0.45f, 0.95f),
-        ColorJuego.Verde   => new Color(0.25f, 0.80f, 0.35f),
+       // ColorJuego.Verde   => new Color(0.25f, 0.80f, 0.35f),
         ColorJuego.Morado  => new Color(0.60f, 0.30f, 0.85f),
-        ColorJuego.Naranja => new Color(1.00f, 0.55f, 0.15f),
+        ColorJuego.rosado => new Color(1.00f, 0.35f, 0.65f),
+        //ColorJuego.Naranja => new Color(1.00f, 0.55f, 0.15f),
         _ => Color.white
     };
 }

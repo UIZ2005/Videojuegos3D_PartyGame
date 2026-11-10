@@ -5671,7 +5671,7 @@ MonoBehaviour:
   velocidadParpadeo: 0.1
   capaJugadores:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!1 &6010474509375689929
 GameObject:
   m_ObjectHideFlags: 0

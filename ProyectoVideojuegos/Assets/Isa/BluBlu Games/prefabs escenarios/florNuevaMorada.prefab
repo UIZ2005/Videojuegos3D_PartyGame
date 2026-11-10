@@ -401,12 +401,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fc4e1cd028c9c4fa0dcab38032da5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoDeColor
-  colorAsignado: 2
+  colorAsignado: 1
   tiempoParpadeo: 1
   velocidadParpadeo: 0.1
   capaJugadores:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!1 &2548775458231417628
 GameObject:
   m_ObjectHideFlags: 0
