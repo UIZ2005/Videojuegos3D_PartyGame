@@ -52,14 +52,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _Densidad_Onda: 0
-    - _Escala_Ruido: 3
+    - _Escala_Ruido: 4.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Velocidad_Ola: 0.2
     - _Velocidad_Onda: 3
     - _Viscosidad_Onda: 5
     m_Colors:
-    - _Base_Color: {r: 0.37647063, g: 0.65882355, b: 0.67058825, a: 1}
-    - _Color_Onda: {r: 0.6943752, g: 0.8237987, b: 0.8867924, a: 1}
+    - _Base_Color: {r: 0.11480943, g: 0.7834604, b: 0.8113208, a: 1}
+    - _Color_Onda: {r: 0, g: 1, b: 0.91619873, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
