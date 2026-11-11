@@ -5054,6 +5054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomba
   nombrePoder: Bomba
+  duracionAnimacion: 2
   modelo: {fileID: 7671402695159334022}
   particulasExplosion: {fileID: 389080208379912190}
   fuerzaExplosion: 15

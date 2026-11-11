@@ -18,6 +18,7 @@ public class Bomba : PowerUp
     private Diamante diamante;
 
     private audiomanager Audiomanager;
+    
     void Awake()
     {
         Audiomanager = FindAnyObjectByType<audiomanager>();
@@ -25,7 +26,15 @@ public class Bomba : PowerUp
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         escalaOriginal = transform.localScale;
+        
+        // Se achica para estar en el suelo
         transform.localScale = escalaOriginal * escalaPequena;
+    }
+
+    protected override void Start()
+    {
+        // Guarda la escala pequeña como centro de la animación
+        base.Start(); 
     }
 
     public override bool PuedeSerRecogido()
@@ -36,14 +45,18 @@ public class Bomba : PowerUp
     public override void SerRecogido(Transform puntoAgarre)
     {
         if(Audiomanager!=null)
-        Audiomanager.seleccionAudio(0);
+            Audiomanager.seleccionAudio(0);
 
         estaSostenida = true;
+        apareciendo = false; // APAGAMOS LA ANIMACIÓN
+
         rb.isKinematic = true; 
         col.isTrigger = true;  
 
         transform.position = puntoAgarre.position;
         transform.SetParent(puntoAgarre);
+        
+        // Vuelve a su tamaño normal en la mano
         transform.localScale = escalaOriginal; 
     }
 

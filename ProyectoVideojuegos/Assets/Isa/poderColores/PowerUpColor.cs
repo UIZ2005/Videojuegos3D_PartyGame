@@ -13,10 +13,10 @@ public class PowerUpColor : PowerUp
     private bool recogido = false;
     private bool ruedaAbierta = false;
     private bool usado = false;
+    private Vector3 escalaOriginal;
 
-
-    public AudioSource fuenteAudio;   // AudioSource en este mismo objeto
-     public AudioClip sonidoRecoger;
+    public AudioSource fuenteAudio;   
+    public AudioClip sonidoRecoger;
 
     public override bool SigueEnManoTrasUsar() => !usado;
 
@@ -24,6 +24,13 @@ public class PowerUpColor : PowerUp
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+        escalaOriginal = transform.localScale;
+    }
+
+    protected override void Start()
+    {
+        // Inicia la animación de respirar
+        base.Start();
     }
 
     public override bool PuedeSerRecogido()
@@ -34,19 +41,18 @@ public class PowerUpColor : PowerUp
     public override void SerRecogido(Transform puntoAgarre)
     {
         recogido = true;
-
+        apareciendo = false; // APAGAMOS LA ANIMACIÓN
 
         if (rb != null) rb.isKinematic = true;
         if (col != null) col.enabled = false;
-        if (modelo != null) modelo.SetActive(true); // no se sostiene en la mano como la bomba
+        if (modelo != null) modelo.SetActive(true); 
 
         transform.SetParent(puntoAgarre);
         transform.localPosition = Vector3.zero;
+        transform.localScale = escalaOriginal; // Restauramos escala estable
 
         fuenteAudio.PlayOneShot(sonidoRecoger);
 
-
-        // Busca la rueda del jugador que lo recogió
         var playerInput = puntoAgarre.GetComponentInParent<PlayerInput>();
         if (playerInput != null)
             rueda = playerInput.GetComponentInChildren<RuedaColoresUI>(true);
@@ -55,13 +61,12 @@ public class PowerUpColor : PowerUp
             Debug.LogWarning("PowerUpColor: el jugador no tiene una RuedaColoresUI en su prefab.");
     }
 
-    //usar es para abrir la rueda
     public override void Usar(Vector3 direccionUso)
     {
         if (!recogido || ruedaAbierta || usado || rueda == null) return;
 
         ruedaAbierta = true;
-        if (modelo != null) modelo.SetActive(false); // no se sostiene en la mano como la bomba
+        if (modelo != null) modelo.SetActive(false); 
         rueda.Abrir(AlConfirmarColor, AlCancelar);
     }
 
@@ -76,7 +81,7 @@ public class PowerUpColor : PowerUp
 
     private void AlCancelar()
     {
-        ruedaAbierta = false; // conserva el poder para usarlo después
+        ruedaAbierta = false; 
     }
 
     void OnDestroy()

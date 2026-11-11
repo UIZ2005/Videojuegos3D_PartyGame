@@ -34,11 +34,8 @@ public class Gancho : PowerUp
     private void Awake()
     {
         audioitem = GetComponent<AudioSource>();
-
         Audiomanager = FindAnyObjectByType<audiomanager>();
-
         escalaOriginal = transform.localScale;
-
         diamante = FindAnyObjectByType<Diamante>();
 
         rb = GetComponent<Rigidbody>();
@@ -49,6 +46,12 @@ public class Gancho : PowerUp
             escalaOriginalLiana = modeloLiana.localScale;
             modeloLiana.gameObject.SetActive(false);
         }
+    }
+
+    protected override void Start()
+    {
+        // Inicia la animaciÃ³n de respirar
+        base.Start();
     }
 
     public override bool PuedeSerRecogido()
@@ -62,25 +65,19 @@ public class Gancho : PowerUp
             Audiomanager.seleccionAudio(0);
 
         estaSostenido = true;
+        apareciendo = false; // APAGAMOS LA ANIMACIÃ“N
 
         jugador = puntoAgarre.root;
-
-        movimientoJugador =
-            jugador.GetComponent<movePlayer>();
+        movimientoJugador = jugador.GetComponent<movePlayer>();
 
         rb.isKinematic = true;
         col.isTrigger = true;
 
         transform.SetParent(puntoAgarre);
-
-        transform.position =
-            puntoAgarre.position;
-
-        transform.localRotation =
-            Quaternion.identity;
-
-        transform.localScale =
-            escalaOriginal * escalaPequena;
+        transform.position = puntoAgarre.position;
+        transform.localRotation = Quaternion.identity;
+        
+        transform.localScale = escalaOriginal * escalaPequena;
     }
 
 
@@ -93,14 +90,12 @@ public class Gancho : PowerUp
         yaUsado = true;
         estaSostenido = false;
 
-        // Separar el objeto del jugador.
         transform.SetParent(null);
 
         rb.isKinematic = true;
         col.isTrigger = true;
 
-        direccionUso =
-            movimientoJugador.camara.transform.forward;
+        direccionUso = movimientoJugador.camara.transform.forward;
 
         if (direccionUso.sqrMagnitude < 0.01f)
         {
@@ -138,7 +133,7 @@ public class Gancho : PowerUp
         else
         {
             Debug.Log(
-                "El gancho no encontró ningún objetivo."
+                "El gancho no encontrÃ³ ningÃºn objetivo."
             );
 
             DestruirGancho();
@@ -160,7 +155,6 @@ public class Gancho : PowerUp
             movimientoJugador.activarquieto();
         }
 
-        // Activar modelo de la liana.
         if (modeloLiana != null)
         {
             modeloLiana.gameObject.SetActive(true);
@@ -183,7 +177,6 @@ public class Gancho : PowerUp
                     jugador.position
                 ).normalized;
 
-            // Mover directamente al jugador.
             jugador.position +=
                 direccion *
                 velocidadAtraccion *
@@ -197,7 +190,6 @@ public class Gancho : PowerUp
             yield return null;
         }
 
-        // Detener cualquier velocidad residual.
         Rigidbody jugadorRb =
             jugador.GetComponent<Rigidbody>();
 
@@ -207,7 +199,6 @@ public class Gancho : PowerUp
                 Vector3.zero;
         }
 
-        // Devolver control al jugador.
         if (movimientoJugador != null)
         {
             movimientoJugador.desactivarquieto();
@@ -215,10 +206,6 @@ public class Gancho : PowerUp
 
         DestruirGancho();
     }
-
-    // =========================================================
-    // ACTUALIZAR LIANA
-    // =========================================================
 
     private void ActualizarLiana(
         Vector3 puntoInicio,
@@ -237,18 +224,15 @@ public class Gancho : PowerUp
         if (distancia <= 0.01f)
             return;
 
-        // La base de la liana sigue al jugador.
         modeloLiana.position =
             puntoInicio;
 
-        // El eje Y de la liana apunta hacia el objetivo.
         modeloLiana.rotation =
             Quaternion.FromToRotation(
                 Vector3.up,
                 direccion.normalized
             );
 
-        // Escalar únicamente en Y.
         Vector3 escala =
             escalaOriginalLiana;
 
@@ -259,7 +243,6 @@ public class Gancho : PowerUp
         modeloLiana.localScale =
             escala;
     }
-
 
     private void DestruirGancho()
     {

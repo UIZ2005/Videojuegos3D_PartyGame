@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gancho
   nombrePoder: Gancho
+  duracionAnimacion: 2
   alcance: 20
   velocidadAtraccion: 15
   capasEnganchables:

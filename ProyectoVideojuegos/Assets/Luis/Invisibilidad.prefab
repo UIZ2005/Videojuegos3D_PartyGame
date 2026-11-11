@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::invisible
   nombrePoder: invisibilidad
+  duracionAnimacion: 2
   disolverDuration: 2
   duracionInvisibilidad: 5
   disolverStrength: 1

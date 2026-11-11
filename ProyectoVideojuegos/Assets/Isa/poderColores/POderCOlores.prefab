@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpColor
   nombrePoder: colores
+  duracionAnimacion: 2
   modelo: {fileID: 7797665743467587768}
   duracionDesaparicion: 10
   fuenteAudio: {fileID: 8209841630084711841}
