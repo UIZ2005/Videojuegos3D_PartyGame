@@ -23,11 +23,16 @@ public class GroundPound : PowerUp
 
     private Rigidbody rb;
 
-    private void Start()
+    protected override void Start()
     {
+        // 1. Iniciamos la animación de aparición heredada de PowerUp.cs
+        base.Start();
+
+        // 2. Ejecutamos la lógica original de GroundPound
         rb = GetComponent<Rigidbody>();
         Audiomanager = FindAnyObjectByType<audiomanager>();   
     }
+
     public override bool PuedeSerRecogido()
     {
         return !estaSostenido && !yaUsado;
@@ -39,9 +44,14 @@ public class GroundPound : PowerUp
             Audiomanager.seleccionAudio(0);
 
         estaSostenido = true;
+        apareciendo = false; // APAGAMOS LA ANIMACIÓN al recogerlo
 
         transform.position = puntoAgarre.position;
         transform.SetParent(puntoAgarre);
+        
+        // Lo devolvemos a su tamaño normal en caso de que lo hayan recogido a mitad de animación
+        transform.localScale = escalaFinal; 
+
         rb.isKinematic = true;
         jugador = puntoAgarre.GetComponentInParent<movePlayer>();
     }

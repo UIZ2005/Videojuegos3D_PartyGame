@@ -2981,7 +2981,7 @@ MonoBehaviour:
   factory: {fileID: 145135320}
   radioDeGeneracion: 3
   tiempoEntreSpawns: 3
-  poderesPermitidos: 000000000100000002000000
+  poderesPermitidos: 00000000010000000200000003000000
 --- !u!114 &145135320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10304,7 +10304,7 @@ MonoBehaviour:
   factory: {fileID: 429957028}
   radioDeGeneracion: 3
   tiempoEntreSpawns: 3
-  poderesPermitidos: 000000000200000004000000
+  poderesPermitidos: 00000000020000000400000003000000
 --- !u!114 &429957028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22160,7 +22160,7 @@ MonoBehaviour:
   factory: {fileID: 911828302}
   radioDeGeneracion: 3
   tiempoEntreSpawns: 3
-  poderesPermitidos: 000000000300000004000000
+  poderesPermitidos: 00000000030000000400000003000000
 --- !u!114 &911828302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73409,7 +73409,7 @@ MonoBehaviour:
   factory: {fileID: 2145075873}
   radioDeGeneracion: 3
   tiempoEntreSpawns: 3
-  poderesPermitidos: 000000000100000002000000
+  poderesPermitidos: 00000000010000000200000003000000
 --- !u!114 &2145075873
 MonoBehaviour:
   m_ObjectHideFlags: 0
