@@ -8382,7 +8382,7 @@ MonoBehaviour:
     iconoHabilidad2: {fileID: 21300000, guid: a7ce6e2ecca15044c93ce8cbd23bd23a, type: 3}
     textoHabilidad2: {fileID: 21300000, guid: d0b8b646d9138334097e1d0c84db6d1d, type: 3}
     fondo: {fileID: 21300000, guid: 28a19cab55a15594299249e93c0d377d, type: 3}
-    characterPrefab: {fileID: 0}
+    characterPrefab: {fileID: 1188682010197764835, guid: f4e39d783a4d8dd4d8767d25bde29a3d, type: 3}
   - nombrePersonaje: FUEGO
     personaje: {fileID: 21300000, guid: 8a432665e7ca8e445a8e444f7fdfb4b1, type: 3}
     nombre: {fileID: 21300000, guid: b7e13a9360863f149a92b153d1828abf, type: 3}
@@ -8391,7 +8391,7 @@ MonoBehaviour:
     iconoHabilidad2: {fileID: 21300000, guid: e361a42e4b5bc2c4c8594a59395bcf9f, type: 3}
     textoHabilidad2: {fileID: 21300000, guid: 3e06c1710d44b094b9f89073b9b61650, type: 3}
     fondo: {fileID: 21300000, guid: 1f6e3693af68cf3419efdddcc76f2d23, type: 3}
-    characterPrefab: {fileID: 0}
+    characterPrefab: {fileID: 1448942656311834678, guid: 15f5324027d92d447bf19f20ff4794bf, type: 3}
   - nombrePersonaje: AIRE
     personaje: {fileID: 21300000, guid: 04542abf388c39f43a6dc5fbe862d8d5, type: 3}
     nombre: {fileID: 21300000, guid: 2d4cceaa5e93b4f4e9e804513f4dd37b, type: 3}
@@ -8400,7 +8400,7 @@ MonoBehaviour:
     iconoHabilidad2: {fileID: 21300000, guid: 18e5d1a97669254498e2463d59de4ba9, type: 3}
     textoHabilidad2: {fileID: 21300000, guid: b2215acee04a431469d2e5133c48199d, type: 3}
     fondo: {fileID: 21300000, guid: e032b90207a647347a109b1820028a6c, type: 3}
-    characterPrefab: {fileID: 0}
+    characterPrefab: {fileID: 2244001783083291866, guid: ca737142d682f10449937bd91db9cb00, type: 3}
   - nombrePersonaje: RAYO
     personaje: {fileID: 21300000, guid: b5cad190822a815479ab614ba563a8cd, type: 3}
     nombre: {fileID: 21300000, guid: b4db9a40d504ba249997481f3f262285, type: 3}
@@ -8409,7 +8409,7 @@ MonoBehaviour:
     iconoHabilidad2: {fileID: 21300000, guid: c5157e1c8b9ab634ea8ca5f45fb5fa65, type: 3}
     textoHabilidad2: {fileID: 21300000, guid: a1865ba8a550b2e4ba224480211a0aa8, type: 3}
     fondo: {fileID: 21300000, guid: aa4d7dc38dcc0094ba2449c241b37ecd, type: 3}
-    characterPrefab: {fileID: 0}
+    characterPrefab: {fileID: 2908183966257414267, guid: 039002bb7c254904f85ee7851a892f01, type: 3}
   btnIniciar: {fileID: 1534926183}
 --- !u!4 &1185513122
 Transform:
