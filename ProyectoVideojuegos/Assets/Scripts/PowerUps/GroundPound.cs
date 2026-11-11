@@ -70,7 +70,7 @@ public class GroundPound : PowerUp
         velocidadCaida,
         this);
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 0.5f);
     }
 
     public void EjecutarImpacto(Vector3 posicionImpacto)

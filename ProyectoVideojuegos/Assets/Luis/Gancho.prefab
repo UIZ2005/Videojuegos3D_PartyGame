@@ -55,7 +55,7 @@ MonoBehaviour:
   velocidadAtraccion: 15
   capasEnganchables:
     serializedVersion: 2
-    m_Bits: 392
+    m_Bits: 904
   clip: {fileID: 8300000, guid: 569fcefb35701bc4bb589c6485b094b4, type: 3}
   modeloLiana: {fileID: 8093303236829948845}
   longitudModeloLiana: 1
