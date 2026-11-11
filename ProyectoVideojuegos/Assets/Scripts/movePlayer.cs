@@ -50,6 +50,10 @@ public class movePlayer : MonoBehaviour
     public LayerMask piso;
     public bool estaPiso;
 
+    [Header("Coyote Time")]
+    public float coyoteTime = 0.15f;
+    private float coyoteTimeCounter;
+
     [Header("Sistema de poderes")]
     public Transform puntoAgarrePoder;
     public float radioInteraccion = 2f;
@@ -218,7 +222,11 @@ public class movePlayer : MonoBehaviour
     private void OnJump(InputValue context)
     {
         if (quieto) return;
-        if (estaPiso) rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        if (coyoteTimeCounter > 0f)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            coyoteTimeCounter = 0f;
+        }
 
     }
 
@@ -260,11 +268,23 @@ public class movePlayer : MonoBehaviour
         velocidad.x = 0f; velocidad.z = 0f; velocidad.y = -velocidadCaida;
         rb.linearVelocity = velocidad;
     }
-
     private void Update()
     {
         bool estabaEnPiso = estaPiso;
-        estaPiso = Physics.CheckSphere(puntoPiso.position, groundCheckRadius, piso);
+        estaPiso = Physics.CheckSphere(
+            puntoPiso.position,
+            groundCheckRadius,
+            piso
+        );
+
+        if (estaPiso)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
 
         if (haciendoGroundPound && estaPiso && !estabaEnPiso)
         {

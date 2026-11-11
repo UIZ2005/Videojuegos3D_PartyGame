@@ -2246,6 +2246,7 @@ MonoBehaviour:
   - {fileID: 974747328}
   - {fileID: 116862632}
   - {fileID: 1238747763}
+  diamanteSpawn: {fileID: 683962910}
 --- !u!4 &105751311
 Transform:
   m_ObjectHideFlags: 0
@@ -3111,7 +3112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448942656311834678, guid: 15f5324027d92d447bf19f20ff4794bf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5406061049016233461, guid: 15f5324027d92d447bf19f20ff4794bf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16763,6 +16764,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1166944046}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &683962909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 683962910}
+  m_Layer: 0
+  m_Name: DiamanteSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &683962910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683962909}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.93, y: 3.76, z: 11.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &690282633
 PrefabInstance:
@@ -34973,7 +35005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1240098477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35015,7 +35047,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240098476}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -35074,7 +35106,7 @@ Transform:
   m_GameObject: {fileID: 1240098476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.1, y: 9.49, z: 47.69}
+  m_LocalPosition: {x: 106.73, y: 38.12, z: 17.33}
   m_LocalScale: {x: 8, y: 1, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73554,3 +73586,4 @@ SceneRoots:
   - {fileID: 147212531}
   - {fileID: 179662988}
   - {fileID: 105751311}
+  - {fileID: 683962910}

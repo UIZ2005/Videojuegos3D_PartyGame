@@ -50,6 +50,17 @@ public class PlantaTrampa : MonoBehaviour
 
         jugadorAtrapado = jugador;
 
+        if (jugador.condiamante)
+        {
+            Diamante diamante =
+                FindAnyObjectByType<Diamante>();
+
+            if (diamante != null)
+            {
+                diamante.soltardiamante();
+            }
+        }
+
         // Guardar jerarquía y escala originales.
         Transform jugadorTransform = jugador.transform;
 

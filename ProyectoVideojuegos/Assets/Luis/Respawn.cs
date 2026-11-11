@@ -5,9 +5,23 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     public Transform[] spawns;
+    public Transform diamanteSpawn;
 
     private void OnTriggerEnter(Collider other)
     {
+        Diamante diamante = other.GetComponent<Diamante>();
+
+        if (diamante != null)
+        {
+            diamante.soltardiamante();
+            Rigidbody rb = diamante.GetComponent<Rigidbody>();
+
+            rb.isKinematic=true;
+            rb.position = diamanteSpawn.position;
+            rb.rotation = diamanteSpawn.rotation;
+            rb.isKinematic = false;
+        }
+
         movePlayer jugador = other.GetComponentInParent<movePlayer>();
 
         if (jugador == null)
