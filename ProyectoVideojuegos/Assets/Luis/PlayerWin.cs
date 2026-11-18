@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerWin : MonoBehaviour
 {
@@ -16,7 +18,18 @@ public class PlayerWin : MonoBehaviour
             if (other.GetComponent<movePlayer>().condiamante)
             {
                 canvaswin.SetActive(true);
+                StartCoroutine(empiezaVictoria());
+                
             }
         }
+    }
+
+    IEnumerator empiezaVictoria()
+    {
+
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("MenuInteractivoInicio");
+
+        yield return null;
     }
 }
