@@ -43,7 +43,7 @@ Material:
     - _blur: 0
     - _foamScale: 200
     - _maskScale: 0
-    - _radius: 0
+    - _radius: -1.19
     - _speed: 1
     - _topdownRadious: 1
     m_Colors:
