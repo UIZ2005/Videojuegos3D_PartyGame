@@ -27,16 +27,13 @@ public class invisible : PowerUp
 
     private GameObject player;
 
-    // Renderer incluye:
-    // MeshRenderer
-    // SkinnedMeshRenderer
     private Renderer[] renderers;
 
     private Material[][] materialesOriginales;
 
     private audiomanager Audiomanager;
 
-    void Start()
+    protected override void Start()
     {
         audioitem = GetComponent<AudioSource>();
         Audiomanager = FindAnyObjectByType<audiomanager>();
@@ -45,6 +42,8 @@ public class invisible : PowerUp
         col = GetComponent<Collider>();
 
         escalaOriginal = transform.localScale;
+
+        base.Start();
     }
 
     public override bool PuedeSerRecogido()
@@ -57,6 +56,9 @@ public class invisible : PowerUp
         if (Audiomanager != null)
             Audiomanager.seleccionAudio(0);
 
+        estaSostenido = true;
+        apareciendo = false;
+
         rb.isKinematic = true;
         col.isTrigger = true;
 
@@ -66,29 +68,23 @@ public class invisible : PowerUp
 
         if (jugador == null)
         {
-            Debug.LogError("No se encontró movePlayer en el jugador.");
+            Debug.LogError("No se encontrÃ³ movePlayer en el jugador.");
             return;
         }
 
-        // Seleccionar material de disolución según el jugador.
         disolveMaterial = disolveMaterials[jugador.numplayer];
 
-        // Obtener TODOS los Renderer del jugador.
-        // Esto incluye MeshRenderer y SkinnedMeshRenderer.
         renderers = player.GetComponentsInChildren<Renderer>();
 
         materialesOriginales = new Material[renderers.Length][];
 
-        // Guardar los materiales originales.
         for (int i = 0; i < renderers.Length; i++)
         {
             materialesOriginales[i] = renderers[i].materials;
         }
 
         transform.position = puntoAgarre.position;
-
         transform.SetParent(puntoAgarre);
-
         transform.localScale = escalaOriginal * escalaPequena;
     }
 
@@ -99,12 +95,11 @@ public class invisible : PowerUp
 
         audioitem.PlayOneShot(clip);
 
+        estaSostenido = false;
         yaUsado = true;
 
         objvisual.SetActive(false);
 
-        // Aplicar material de disolución a todos
-        // los Renderer del jugador.
         foreach (Renderer renderer in renderers)
         {
             renderer.materials = CrearMaterialesDisolver(renderer);
@@ -184,7 +179,6 @@ public class invisible : PowerUp
             yield return null;
         }
 
-        // Restaurar todos los materiales originales.
         for (int i = 0; i < renderers.Length; i++)
         {
             renderers[i].materials = materialesOriginales[i];
