@@ -16,7 +16,7 @@ public class BubbleAttack : MonoBehaviour
     public float velocidadRotacion = 180f;
 
     private int jugadorOrigen;
-
+    public Diamante diamante;
     private movePlayer jugadorAtrapado;
     private Transform jugadorTransform;
 
@@ -31,6 +31,7 @@ public class BubbleAttack : MonoBehaviour
 
     private void Start()
     {
+        diamante = FindAnyObjectByType<Diamante>();
         audioSource = GetComponent<AudioSource>();
         burbujaanim = GetComponent<Animator>();
         Destroy(gameObject, tiempoVida);
@@ -88,7 +89,11 @@ public class BubbleAttack : MonoBehaviour
         // Guardamos la escala original del jugador.
         escalaOriginalJugador = jugadorTransform.lossyScale;
 
-       
+
+        if (jugador.condiamante && diamante != null)
+        {
+            diamante.soltardiamante();
+        }
 
         if (stun != null)
         {

@@ -18,6 +18,7 @@ public class PlayerWin : MonoBehaviour
             if (other.GetComponent<movePlayer>().condiamante)
             {
                 canvaswin.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
                 StartCoroutine(empiezaVictoria());
                 
             }
